@@ -75,7 +75,7 @@ const IndexPage = () => {
   return (
     <>
       <Head>
-        <title>Too Warm</title>
+        <title>Too Warm: Climate Tracker and Summary</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Box bg="white" w="100%" color="black">
