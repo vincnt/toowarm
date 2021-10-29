@@ -57,7 +57,7 @@ export default function WithSubnavigation() {
           <Text
             textAlign={useBreakpointValue({ base: "center", md: "left" })}
             color="black"
-            fontSize="2xl"
+            fontSize="xl"
             fontFamily={"heading"}
             ml="10"
           >
