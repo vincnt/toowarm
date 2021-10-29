@@ -90,6 +90,14 @@ const IndexPage = () => {
           </VStack>
         </Container>
       </Box>
+      <Box bg="#FEFBE0" w="100%" color="black">
+        <Container maxW="container.lg" py="20px">
+          <Heading size="lg" py="5px">
+            The Science
+          </Heading>
+          <Box>graphs go here</Box>
+        </Container>
+      </Box>
     </>
   );
 };
