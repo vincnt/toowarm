@@ -28,25 +28,46 @@ export type ArticleBox = {
 
 const ArticleBox = ({ data }: { data: ArticleBox }) => {
   return (
-    <LinkBox>
-      <Box height="150px" width="200px">
-        <Image
-          height="50%"
-          width="100%"
-          src={data.imageUrl}
-          alt={data.imageAlt}
-          objectFit="cover"
-        />
-        <LinkOverlay href={data.articleUrl} isExternal={true}>
-          <Text fontSize="xs" fontWeight="semibold">
-            {data.text}
+    <>
+      <LinkBox display={{ base: "none", md: "flex" }}>
+        <Box height="150px" width="200px">
+          <Image
+            height="50%"
+            width="100%"
+            src={data.imageUrl}
+            alt={data.imageAlt}
+            objectFit="cover"
+          />
+          <LinkOverlay href={data.articleUrl} isExternal={true}>
+            <Text fontSize="xs" fontWeight="semibold">
+              {data.text}
+            </Text>
+          </LinkOverlay>
+          <Text fontSize="xs" color="gray">
+            {data.source}
           </Text>
-        </LinkOverlay>
-        <Text fontSize="xs" color="gray">
-          {data.source}
-        </Text>
-      </Box>
-    </LinkBox>
+        </Box>
+      </LinkBox>
+      <LinkBox display={{ base: "flex", md: "none" }}>
+        <HStack height="80px" width="100%">
+          <Image
+            height="90%"
+            width="100px"
+            src={data.imageUrl}
+            alt={data.imageAlt}
+            objectFit="cover"
+          />
+          <LinkOverlay href={data.articleUrl} isExternal={true}>
+            <Text fontSize="xs" fontWeight="semibold">
+              {data.text}
+            </Text>
+            <Text fontSize="xs" color="gray">
+              {data.source}
+            </Text>
+          </LinkOverlay>
+        </HStack>
+      </LinkBox>
+    </>
   );
 };
 
@@ -58,30 +79,59 @@ const IndexPage = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Box bg="white" w="100%" color="black">
-        <Container maxW="container.lg" bg="white" py="20px">
+        <Container
+          maxW={{ base: "100vw", md: "container.lg" }}
+          bg="white"
+          py="20px"
+        >
           <Heading size="lg" py="5px">
             The Signs
           </Heading>
 
-          <VStack justifyContent="center" alignContent="center" py="1px">
-            <Heading size="md" justifyContent="center" fontWeight="semibold">
+          <VStack
+            justifyContent={{ base: "start", md: "center" }}
+            alignContent={{ base: "start", md: "center" }}
+            py="1px"
+          >
+            <Heading
+              size="md"
+              justifyContent={{ base: "start", md: "center" }}
+              fontWeight="semibold"
+            >
               It's getting too hot.
             </Heading>
             <Divider bg="red" height="3px" width="60%" />
-            <SimpleGrid columns={{ sm: 2, md: 4 }} spacing="40px" py="5px">
+            <SimpleGrid
+              columns={{ sm: 1, md: 4 }}
+              spacing={{ base: "5px", md: "40px" }}
+              py="5px"
+              width="100%"
+            >
               <ArticleBox data={articles.hotArticle1} />
               <ArticleBox data={articles.hotArticle2} />
               <ArticleBox data={articles.hotArticle3} />
               <ArticleBox data={articles.hotArticle4} />
             </SimpleGrid>
           </VStack>
-
-          <VStack justifyContent="center" alignContent="center" py="1px">
-            <Heading size="md" justifyContent="center" fontWeight="semibold">
+          <VStack
+            justifyContent={{ base: "start", md: "center" }}
+            alignContent={{ base: "start", md: "center" }}
+            py="1px"
+          >
+            <Heading
+              size="md"
+              justifyContent={{ base: "start", md: "center" }}
+              fontWeight="semibold"
+            >
               It's getting too wet.
             </Heading>
             <Divider bg="blue" height="3px" width="60%" />
-            <SimpleGrid columns={{ sm: 2, md: 4 }} spacing="40px" py="5px">
+            <SimpleGrid
+              columns={{ sm: 1, md: 4 }}
+              spacing={{ base: "5px", md: "40px" }}
+              py="5px"
+              width="100%"
+            >
               <ArticleBox data={articles.wetArticle1} />
               <ArticleBox data={articles.wetArticle2} />
               <ArticleBox data={articles.wetArticle3} />
