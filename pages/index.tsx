@@ -209,9 +209,12 @@ const IndexPage = () => {
                 </Box>
                 <Box width="100%" textAlign="center">
                   <Text>
-                    2100 Estimate{" "}
-                    <Tooltip label="Phone number" fontSize="md">
-                      <InfoOutlineIcon h="10px" w="10px" />
+                    2100 Estimate
+                    <Tooltip
+                      label="Estimate from Climate Action Tracker. More details below."
+                      fontSize="md"
+                    >
+                      <InfoOutlineIcon h="12px" w="12px" pl="3px" />
                     </Tooltip>
                   </Text>
                 </Box>

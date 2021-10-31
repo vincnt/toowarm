@@ -39,11 +39,7 @@ export default function WithSubnavigation() {
         // borderColor={useColorModeValue("gray.200", "gray.900")}
         align={"center"}
       >
-        <Flex
-          flex={{ base: 1, md: "auto" }}
-          ml={{ base: -2 }}
-          display={{ base: "flex", md: "none" }}
-        >
+        <Flex display={{ base: "flex", md: "none" }}>
           <IconButton
             onClick={onToggle}
             icon={
@@ -53,19 +49,26 @@ export default function WithSubnavigation() {
             aria-label={"Toggle Navigation"}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
+        <Flex flex={{ base: 1 }} justify={{ base: "start", md: "start" }}>
           <Text
-            textAlign={useBreakpointValue({ base: "center", md: "left" })}
+            textAlign={useBreakpointValue({ base: "start", md: "start" })}
             color="black"
-            fontSize="xl"
+            fontSize={{ base: "md", md: "xl" }}
             fontFamily={"heading"}
-            ml="10"
+            ml={{ base: "0px", md: "10px" }}
           >
-            It's getting too warm.
+            <Link
+              href="/"
+              _hover={{
+                textDecoration: "none",
+              }}
+            >
+              It's getting too warm.
+            </Link>
           </Text>
           <Spacer />
 
-          <Flex display={{ base: "none", md: "flex" }} mr={10}>
+          <Flex display={{ base: "none", md: "flex" }}>
             <DesktopNav />
           </Flex>
         </Flex>
