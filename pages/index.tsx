@@ -96,7 +96,7 @@ const IndexPage = () => {
   }, [currentArticleNumber]);
 
   const articlesList = articlesArray.map((article) => (
-    <LinkBox>
+    <LinkBox key={article.articleUrl}>
       <Flex
         wrap="wrap"
         onMouseEnter={() => {
@@ -104,7 +104,6 @@ const IndexPage = () => {
           setCurrentArticleHover(true);
         }}
         onMouseLeave={() => setCurrentArticleHover(false)}
-        key={article.articleUrl}
         py="1px"
       >
         <LinkOverlay href={article.articleUrl} isExternal={true}>
