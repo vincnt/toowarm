@@ -220,35 +220,41 @@ const IndexPage = () => {
           </HStack>
         </Flex>
       </Box>
-      <HStack
-        spacing="10px"
-        width={{ sm: "80%", md: "50%" }}
+      <Box
+        width={{ sm: "80%", md: "80%" }}
         margin="auto"
-        py="30px"
+        py="80px"
         mb={{ sm: "20px", md: "20px" }}
         px="15px"
       >
-        <Heading size="md" pl="20px" width="20%" color="red">
-          At +3°C
-        </Heading>
-        <Flex width="80%" direction="row" wrap="wrap" margin="0" padding="0">
-          <Text fontWeight="bold" px="3px">
-            Extreme Temperatures
+        <HStack spacing="20px">
+          <Spacer />
+          <Heading size="md" pl="20px" color="red">
+            At +3°C
+          </Heading>
+          <VStack>
+            <Flex direction="row" wrap="wrap" margin="0" padding="0">
+              <Text fontWeight="semibold" px="3px">
+                Extreme Temperatures
+              </Text>
+              <Text px="3px"> Floods </Text>
+              <Text fontWeight="semibold" px="3px">
+                Food Shortages
+              </Text>
+              <Text px="3px"> Droughts </Text>
+              <Text fontWeight="semibold" px="3px">
+                Loss of Wildlife
+              </Text>
+            </Flex>
+          </VStack>
+          <Spacer />
+        </HStack>
+        <Center py="20px">
+          <Text fontWeight="bold" fontSize="lg">
+            Become the norm.
           </Text>
-          <Text px="3px"> Floods </Text>
-          <Text fontWeight="bold" px="3px">
-            Food Shortages
-          </Text>
-          <Text px="3px"> Droughts </Text>
-          <Text fontWeight="bold" px="3px">
-            Water Shortages
-          </Text>
-          <Text px="3px"> Countries Underwater </Text>
-          <Text fontWeight="bold" px="3px">
-            Loss of Wildlife
-          </Text>
-        </Flex>
-      </HStack>
+        </Center>
+      </Box>
       <Box bg="white" w="100%" color="black">
         <Container
           maxW={{ base: "100vw", md: "container.lg" }}
