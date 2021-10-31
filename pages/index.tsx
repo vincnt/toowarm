@@ -15,9 +15,12 @@ import {
   Flex,
   Spacer,
   Tooltip,
+  Grid,
+  GridItem,
 } from "@chakra-ui/react";
 import { InfoOutlineIcon } from "@chakra-ui/icons";
 import { articles } from "../data/theSigns";
+import { useState, useEffect } from "react";
 
 export type ArticleBox = {
   imageUrl: string;
@@ -73,6 +76,53 @@ const ArticleBox = ({ data }: { data: ArticleBox }) => {
 };
 
 const IndexPage = () => {
+  const maxArticles = 5;
+  const articlesArray = Object.values(articles).slice(0, maxArticles + 1);
+  const [currentArticleNumber, setCurrentArticleNumber] = useState(0);
+  const [currentArticle, setCurrentArticle] = useState(articlesArray[0]);
+  const [currentArticleHover, setCurrentArticleHover] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentArticleNumber((i) => (i < maxArticles ? i + 1 : 0));
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (!currentArticleHover) {
+      setCurrentArticle(articlesArray[currentArticleNumber]);
+    }
+  }, [currentArticleNumber]);
+
+  const articlesList = articlesArray.map((article) => (
+    <LinkBox>
+      <Flex
+        wrap="wrap"
+        onMouseEnter={() => {
+          setCurrentArticle(article);
+          setCurrentArticleHover(true);
+        }}
+        onMouseLeave={() => setCurrentArticleHover(false)}
+        key={article.articleUrl}
+        py="1px"
+      >
+        <LinkOverlay href={article.articleUrl} isExternal={true}>
+          <Text
+            fontSize="sm"
+            color={
+              article.articleUrl == currentArticle.articleUrl ? "black" : "gray"
+            }
+            _hover={{
+              color: "black",
+            }}
+          >
+            {article.text}
+          </Text>
+        </LinkOverlay>
+      </Flex>
+    </LinkBox>
+  ));
   return (
     <>
       <Head>
@@ -84,7 +134,8 @@ const IndexPage = () => {
         w="100%"
         color="black"
         mt={{ sm: "20px", md: "100px" }}
-        p="10px"
+        pb="20px"
+        px="15px"
       >
         <Center>
           <VStack spacing="0" alignItems="left">
@@ -173,10 +224,11 @@ const IndexPage = () => {
         spacing="10px"
         width={{ sm: "80%", md: "50%" }}
         margin="auto"
-        py="20px"
-        mb={{ sm: "20px", md: "50px" }}
+        py="30px"
+        mb={{ sm: "20px", md: "20px" }}
+        px="15px"
       >
-        <Heading size="md" pl="30px" width="20%" color="red">
+        <Heading size="md" pl="20px" width="20%" color="red">
           At +3°C
         </Heading>
         <Flex width="80%" direction="row" wrap="wrap" margin="0" padding="0">
@@ -198,6 +250,46 @@ const IndexPage = () => {
         </Flex>
       </HStack>
       <Box bg="white" w="100%" color="black">
+        <Container
+          maxW={{ base: "100vw", md: "container.lg" }}
+          bg="white"
+          py="10px"
+        >
+          <Grid
+            templateColumns="repeat(8, 1fr)"
+            gap={4}
+            height="100%"
+            py="20px"
+            display={{ base: "none", md: "flex" }}
+          >
+            <GridItem colSpan={5}>
+              <Box pb="10px">
+                <Heading size="lg">It's already happening at 1°C</Heading>
+                <Divider bg="red" height="3px" width="80%" my="5px" />
+              </Box>
+              <VStack spacing="1px" textAlign="left" alignItems="left">
+                {articlesList}
+              </VStack>
+            </GridItem>
+            <GridItem colSpan={3}>
+              <Image
+                src={currentArticle.imageUrl}
+                height="250px"
+                width="400px"
+                alt={"alt"}
+                objectFit="cover"
+              />
+            </GridItem>
+          </Grid>
+          <VStack display={{ base: "flex", md: "none" }}>
+            <Heading size="lg">It's already happening at 1°C</Heading>
+            <Divider bg="red" height="3px" width="80%" my="5px" />
+            {articlesList}
+          </VStack>
+        </Container>
+      </Box>
+
+      {/* <Box bg="white" w="100%" color="black">
         <Container
           maxW={{ base: "100vw", md: "container.lg" }}
           bg="white"
@@ -258,7 +350,7 @@ const IndexPage = () => {
             </SimpleGrid>
           </VStack>
         </Container>
-      </Box>
+      </Box> */}
       <Box bg="#FEFBE0" w="100%" color="black">
         <Container maxW="container.lg" py="20px">
           <Heading size="lg" py="5px">
