@@ -14,6 +14,7 @@ import {
   Flex,
   Spacer,
   Tooltip,
+  SimpleGrid,
   Grid,
   GridItem,
   Slider,
@@ -140,7 +141,7 @@ const IndexPage = ({
 
   const co2HistoricLineChart = (
     <Center>
-      <ResponsiveContainer width="70%" height={200}>
+      <ResponsiveContainer width="90%" height={200}>
         <LineChart
           data={co2Data}
           margin={{ top: 20, right: 10, left: 10, bottom: 20 }}
@@ -171,7 +172,7 @@ const IndexPage = ({
   );
   const co2AndTempLineChart = (
     <Center>
-      <ResponsiveContainer width="60%" height={200}>
+      <ResponsiveContainer width="90%" height={200}>
         <LineChart
           data={co2AndTempData}
           margin={{ top: 20, right: 10, left: 10, bottom: 20 }}
@@ -225,12 +226,19 @@ const IndexPage = ({
   );
   const sspProjectionLineChart = (
     <Center>
-      <ResponsiveContainer width="80%" height={200}>
+      <ResponsiveContainer width="90%" height={200}>
         <LineChart
           data={sspProjections}
-          margin={{ top: 20, right: 10, left: 10, bottom: 20 }}
+          margin={{ top: 20, right: 0, left: 0, bottom: 20 }}
         >
-          <Legend verticalAlign="top" height={20} />
+          <Legend
+            align="right"
+            verticalAlign="middle"
+            layout="vertical"
+            formatter={(value: string, entry: any) => {
+              return <span style={{ fontSize: "12px" }}>{value}</span>;
+            }}
+          />
           <Line
             name="SSP51-1.9"
             type="monotone"
@@ -269,7 +277,7 @@ const IndexPage = ({
     </Center>
   );
   const articlesList = articlesArray.map((article) => (
-    <LinkBox key={article.articleUrl}>
+    <LinkBox key={article.articleUrl} width="100%">
       <Flex
         wrap="wrap"
         onMouseEnter={() => {
@@ -408,7 +416,7 @@ const IndexPage = ({
       <Box
         width={{ sm: "80%", md: "80%" }}
         margin="auto"
-        py="80px"
+        py={{ base: "30px", md: "80px" }}
         mb={{ sm: "20px", md: "20px" }}
         px="15px"
       >
@@ -450,7 +458,12 @@ const IndexPage = ({
                 <Heading size="lg">It's already happening at 1°C</Heading>
                 <Divider bg="red" height="3px" width="80%" my="5px" />
               </Box>
-              <VStack spacing="1px" textAlign="left" alignItems="left">
+              <VStack
+                spacing="1px"
+                textAlign="left"
+                alignItems="left"
+                width="100%"
+              >
                 {articlesList}
               </VStack>
             </GridItem>
@@ -477,55 +490,57 @@ const IndexPage = ({
             The Science
           </Heading>
           <Text>show technical details (tickbox)</Text>
-          <Box margin="auto" width="80%" py="20px">
-            <Heading size="md" py="20px">
-              1. Our activities produce carbon dioxide
-            </Heading>
-            <Text> Factories, vehicles, </Text>
-          </Box>
-          <Box margin="auto" width="80%" py="20px">
-            <Box margin="auto">
-              <Heading size="md" py="20px">
-                2. Carbon dioxide levels are at a record high
+          <SimpleGrid minChildWidth={{ base: "100%", md: "50%" }} width="100%">
+            <Box width="100%" height="100%">
+              <Heading size="md" py="20px" fontWeight="semibold">
+                1. Our activities produce carbon dioxide
               </Heading>
-              {co2HistoricLineChart}
-              <Center>
-                <VStack width="100%">
-                  <Slider
-                    aria-label="co2-slider"
-                    defaultValue={Math.cbrt(maximumCo2Age)}
-                    min={5}
-                    max={Math.cbrt(maximumCo2Age)}
-                    onChange={(val) => setCo2SliderValue(val ** 3)}
-                    width="50%"
-                    colorScheme="gray"
-                  >
-                    <SliderTrack height="2px">
-                      <SliderFilledTrack />
-                    </SliderTrack>
-                    <SliderThumb height="15px" width="15px">
-                      <Box as={TiMediaRewindOutline} />
-                    </SliderThumb>
-                  </Slider>
-                  <Text> Time Range</Text>
-                </VStack>
-              </Center>
+              <Text> Factories, vehicles, </Text>
             </Box>
-          </Box>
-          <Box margin="auto" width="80%">
-            <Heading size="md" py="20px">
-              3. Carbon dioxide levels are linked to Earth's temperature.
-            </Heading>
-            {co2AndTempLineChart}
-          </Box>
+            <Box width="100%" height="100%">
+              <Box>
+                <Heading size="md" py="20px" fontWeight="semibold">
+                  2. Carbon dioxide levels are at a record high
+                </Heading>
+                {co2HistoricLineChart}
+                <Center>
+                  <VStack width="100%">
+                    <Slider
+                      aria-label="co2-slider"
+                      defaultValue={Math.cbrt(maximumCo2Age)}
+                      min={5}
+                      max={Math.cbrt(maximumCo2Age)}
+                      onChange={(val) => setCo2SliderValue(val ** 3)}
+                      width="50%"
+                      colorScheme="gray"
+                    >
+                      <SliderTrack height="2px">
+                        <SliderFilledTrack />
+                      </SliderTrack>
+                      <SliderThumb height="15px" width="15px">
+                        <Box as={TiMediaRewindOutline} />
+                      </SliderThumb>
+                    </Slider>
+                    <Text> Time Range</Text>
+                  </VStack>
+                </Center>
+              </Box>
+            </Box>
+            <Box width="100%">
+              <Heading size="md" py="20px" fontWeight="semibold">
+                3. Carbon dioxide levels are linked to Earth's temperature.
+              </Heading>
+              {co2AndTempLineChart}
+            </Box>
 
-          <Box margin="auto" width="80%" py="20px">
-            <Heading size="md" py="20px">
-              4. Earth's temperature will rise rapidly if we don't cut down on
-              our carbon dioxide production
-            </Heading>
-            {sspProjectionLineChart}
-          </Box>
+            <Box width="100%">
+              <Heading size="md" py="20px" fontWeight="semibold">
+                4. Earth's temperature will rise rapidly if we don't cut down on
+                our carbon dioxide production
+              </Heading>
+              {sspProjectionLineChart}
+            </Box>
+          </SimpleGrid>
         </Container>
       </Flex>
     </>
