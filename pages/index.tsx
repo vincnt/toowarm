@@ -125,7 +125,7 @@ const IndexPage = () => {
   return (
     <>
       <Head>
-        <title>Too Warm: Climate Tracker and Summary</title>
+        <title>Climate Change Summary - It's Getting Too Warm</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Box
@@ -143,7 +143,15 @@ const IndexPage = () => {
           </VStack>
         </Center>
         <Center>
-          <Divider bg="gray" height="15px" width="70%" mt="40px" />
+          {/* <Divider bg="gray" height="15px" width="70%" mt="40px" /> */}
+          <Box
+            backgroundImage="linear-gradient(to right, blue 0%,#ff0000 100%)"
+            backgroundRepeat="no-repeat"
+            backgroundPosition="center center"
+            height="15px"
+            width="70%"
+            mt="10px"
+          ></Box>
         </Center>
         <Flex width="70%" margin="auto">
           <HStack spacing="1px" width="100%" justifyContent="space-between">
@@ -161,7 +169,7 @@ const IndexPage = () => {
                 <Box> 1970 </Box>
               </VStack>
             </HStack>
-            <HStack spacing="0px">
+            <HStack spacing="0px" pr="20%">
               <VStack spacing="1px">
                 <Box
                   backgroundImage="linear-gradient(#000, #000)"
@@ -189,7 +197,7 @@ const IndexPage = () => {
             <HStack spacing="0px">
               <VStack spacing="1px">
                 <Box
-                  backgroundImage="linear-gradient(#ff0000, #ff0000)"
+                  backgroundImage="linear-gradient(#000000, #000000)"
                   backgroundSize="3px 100%"
                   backgroundRepeat="no-repeat"
                   backgroundPosition="center center"
@@ -201,17 +209,19 @@ const IndexPage = () => {
                   <VStack height="100%">
                     <Spacer />
                     <Box>
-                      <Text pl="50px">+3°C</Text>
+                      <Text pl="50px" color="#ff0000" fontWeight="bold">
+                        +3°C
+                      </Text>
                     </Box>
                     <Spacer />
                   </VStack>
                 </Box>
                 <Box width="100%" textAlign="center">
                   <Text>
-                    2100 Estimate
+                    2100
                     <Tooltip
-                      label="Estimate from Climate Action Tracker. More details below."
-                      fontSize="md"
+                      label="Climate Action Tracker estimate for global increase in Earth's temperature by 2100 if no further actions are taken. More details below."
+                      fontSize="sm"
                     >
                       <InfoOutlineIcon h="12px" w="12px" pl="3px" />
                     </Tooltip>
@@ -231,12 +241,22 @@ const IndexPage = () => {
       >
         <HStack spacing="20px">
           <Spacer />
-          <Heading size="md" pl="20px" color="red">
+          {/* <Heading size="md" pl="20px" color="red">
             At +3°C
-          </Heading>
+          </Heading> */}
           <VStack>
             <Flex direction="row" wrap="wrap" margin="0" padding="0">
-              <Text fontWeight="semibold" px="3px">
+              <Text color="red" fontWeight="bold" px="2px">
+                At +3°C
+              </Text>
+              <Text px="2px">
+                Extreme Temperatures, Floods, Food Shortages, Droughts and Loss
+                of Wildlife
+              </Text>
+              <Text fontWeight="bold" px="2px">
+                become the norm.
+              </Text>
+              {/* <Text fontWeight="semibold" px="3px">
                 Extreme Temperatures
               </Text>
               <Text px="3px"> Floods </Text>
@@ -246,16 +266,16 @@ const IndexPage = () => {
               <Text px="3px"> Droughts </Text>
               <Text fontWeight="semibold" px="3px">
                 Loss of Wildlife
-              </Text>
+              </Text> */}
             </Flex>
           </VStack>
           <Spacer />
         </HStack>
-        <Center py="20px">
+        {/* <Center py="20px">
           <Text fontWeight="bold" fontSize="lg">
             Become the norm.
           </Text>
-        </Center>
+        </Center> */}
       </Box>
       <Box bg="white" w="100%" color="black">
         <Container
