@@ -9,8 +9,6 @@ import {
   Image,
   Text,
   Center,
-  LinkBox,
-  LinkOverlay,
   Flex,
   Spacer,
   Tooltip,
@@ -22,25 +20,17 @@ import {
   SliderFilledTrack,
   SliderThumb,
 } from "@chakra-ui/react";
-import { InfoOutlineIcon, ChevronLeftIcon } from "@chakra-ui/icons";
-import { articles } from "../data/theSigns";
+import { InfoOutlineIcon } from "@chakra-ui/icons";
 import { useState, useEffect } from "react";
-import {
-  LineChart,
-  Line,
-  Legend,
-  XAxis,
-  YAxis,
-  ResponsiveContainer,
-} from "recharts";
 import { TiMediaRewindOutline } from "react-icons/ti";
-export type ArticleBox = {
-  imageUrl: string;
-  imageAlt: string;
-  articleUrl: string;
-  text: string;
-  source: string;
-};
+
+import { articles } from "../data/theSigns";
+import {
+  co2AndTempLineChart,
+  co2HistoricLineChart,
+  sspProjectionLineChart,
+} from "../components/Charts";
+import { ArticlesList } from "../components/NewsArticle";
 
 export async function getStaticProps() {
   const noaaCo2 = await import("../data/noaa_co2.json");
@@ -60,51 +50,6 @@ export async function getStaticProps() {
   };
 }
 
-const ArticleBox = ({ data }: { data: ArticleBox }) => {
-  return (
-    <>
-      <LinkBox display={{ base: "none", md: "flex" }}>
-        <Box height="150px" width="200px">
-          <Image
-            height="50%"
-            width="100%"
-            src={data.imageUrl}
-            alt={data.imageAlt}
-            objectFit="cover"
-          />
-          <LinkOverlay href={data.articleUrl} isExternal={true}>
-            <Text fontSize="xs" fontWeight="semibold">
-              {data.text}
-            </Text>
-          </LinkOverlay>
-          <Text fontSize="xs" color="gray">
-            {data.source}
-          </Text>
-        </Box>
-      </LinkBox>
-      <LinkBox display={{ base: "flex", md: "none" }}>
-        <HStack height="80px" width="100%">
-          <Image
-            height="90%"
-            width="100px"
-            src={data.imageUrl}
-            alt={data.imageAlt}
-            objectFit="cover"
-          />
-          <LinkOverlay href={data.articleUrl} isExternal={true}>
-            <Text fontSize="xs" fontWeight="semibold">
-              {data.text}
-            </Text>
-            <Text fontSize="xs" color="gray">
-              {data.source}
-            </Text>
-          </LinkOverlay>
-        </HStack>
-      </LinkBox>
-    </>
-  );
-};
-
 const IndexPage = ({
   co2Data,
   co2AndTempData,
@@ -114,7 +59,6 @@ const IndexPage = ({
   co2AndTempData: any;
   sspProjections: any;
 }) => {
-  console.log("ssp", sspProjections);
   const maxArticles = 5;
   const articlesArray = Object.values(articles).slice(0, maxArticles + 1);
   const [currentArticleNumber, setCurrentArticleNumber] = useState(0);
@@ -139,176 +83,14 @@ const IndexPage = ({
     }
   }, [currentArticleNumber]);
 
-  const co2HistoricLineChart = (
-    <Center>
-      <ResponsiveContainer width="90%" height={200}>
-        <LineChart
-          data={co2Data}
-          margin={{ top: 20, right: 10, left: 10, bottom: 20 }}
-        >
-          <Line type="natural" dataKey="co2" stroke="#157922" dot={false} />
-          <XAxis
-            dataKey="age"
-            reversed={true}
-            type="number"
-            domain={[1, co2SliderValue]}
-            allowDataOverflow={true}
-            label={{ value: "Years Ago", dy: 15 }}
-            ticks={[
-              1, 2, 3, 5, 10, 30, 50, 100, 500, 1000, 2000, 5000, 10000, 50000,
-              100000, 500000, 700000,
-            ].filter((val) => val <= co2SliderValue)}
-            tickFormatter={(tick) => {
-              return tick.toLocaleString();
-            }}
-          />
-          <YAxis
-            label={{ value: "Carbon Dioxide", angle: -90, dx: -20 }}
-            domain={[150, 450]}
-          />
-        </LineChart>
-      </ResponsiveContainer>
-    </Center>
-  );
-  const co2AndTempLineChart = (
-    <Center>
-      <ResponsiveContainer width="90%" height={200}>
-        <LineChart
-          data={co2AndTempData}
-          margin={{ top: 20, right: 10, left: 10, bottom: 20 }}
-        >
-          <Legend verticalAlign="top" height={30} />
-
-          <Line
-            name="Carbon Dioxide"
-            type="basis"
-            yAxisId="left"
-            dataKey="co2"
-            stroke="#1a156e"
-            dot={false}
-          />
-          <Line
-            name="Temperature"
-            type="basis"
-            yAxisId="right"
-            dataKey="temp"
-            stroke="#a72727"
-            dot={false}
-          />
-
-          <XAxis
-            dataKey="age"
-            reversed={true}
-            type="number"
-            domain={[1, 400000]}
-            allowDataOverflow={true}
-            label={{ value: "Years Ago", dy: 15 }}
-            ticks={[10, 10000, 100000, 300000]}
-            tickFormatter={(tick) => {
-              return tick.toLocaleString();
-            }}
-          />
-          <YAxis
-            hide={true}
-            yAxisId="left"
-            // label={{ value: "Carbon Dioxide", angle: -90, dx: -20 }}
-            domain={[150, 350]}
-          />
-          <YAxis
-            hide={true}
-            yAxisId="right"
-            orientation="right"
-            // label={{ value: "Temperature", angle: 90, dx: 15 }}
-          />
-        </LineChart>
-      </ResponsiveContainer>
-    </Center>
-  );
-  const sspProjectionLineChart = (
-    <Center>
-      <ResponsiveContainer width="90%" height={200}>
-        <LineChart
-          data={sspProjections}
-          margin={{ top: 20, right: 0, left: 0, bottom: 20 }}
-        >
-          <Legend
-            align="right"
-            verticalAlign="middle"
-            layout="vertical"
-            formatter={(value: string, entry: any) => {
-              return <span style={{ fontSize: "12px" }}>{value}</span>;
-            }}
-          />
-          <Line
-            name="SSP51-1.9"
-            type="monotone"
-            dataKey="SSP1-19-IMAGE"
-            stroke="#1d13df"
-            dot={false}
-          />
-          <Line
-            name="SSP1-2.6"
-            type="monotone"
-            dataKey="SSP1-26-IMAGE"
-            stroke="#f00a0a"
-            dot={false}
-          />
-          <Line
-            name="SSP5-4.0"
-            type="monotone"
-            dataKey="SSP5-Baseline-REMIND-MAGPIE"
-            stroke="#0af030"
-            dot={false}
-          />
-
-          <XAxis
-            dataKey="year"
-            type="number"
-            scale="time"
-            domain={[2010, 2100]}
-            label={{ value: "Year", dy: 15 }}
-          />
-          <YAxis
-            label={{ value: "Temperature Increase", angle: -90, dx: -20 }}
-            domain={[0, 6]}
-          />
-        </LineChart>
-      </ResponsiveContainer>
-    </Center>
-  );
-  const articlesList = articlesArray.map((article) => (
-    <LinkBox key={article.articleUrl} width="100%">
-      <Flex
-        wrap="wrap"
-        onMouseEnter={() => {
-          setCurrentArticle(article);
-          setCurrentArticleHover(true);
-        }}
-        onMouseLeave={() => setCurrentArticleHover(false)}
-        py="1px"
-      >
-        <LinkOverlay href={article.articleUrl} isExternal={true}>
-          <Text
-            fontSize="sm"
-            color={
-              article.articleUrl == currentArticle.articleUrl ? "black" : "gray"
-            }
-            _hover={{
-              color: "black",
-            }}
-          >
-            {article.text}
-          </Text>
-        </LinkOverlay>
-      </Flex>
-    </LinkBox>
-  ));
   return (
     <>
       <Head>
         <title>Climate Change Summary - It's Getting Too Warm</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+
+      {/* Hero Section */}
       <Box
         bg="white"
         w="100%"
@@ -324,7 +106,6 @@ const IndexPage = ({
           </VStack>
         </Center>
         <Center>
-          {/* <Divider bg="gray" height="15px" width="70%" mt="40px" /> */}
           <Box
             backgroundImage="linear-gradient(to right, blue 0%,#ff0000 100%)"
             backgroundRepeat="no-repeat"
@@ -413,6 +194,8 @@ const IndexPage = ({
           </HStack>
         </Flex>
       </Box>
+
+      {/* Sub Hero Section */}
       <Box
         width={{ sm: "80%", md: "80%" }}
         margin="auto"
@@ -440,6 +223,9 @@ const IndexPage = ({
           <Spacer />
         </HStack>
       </Box>
+
+      {/* It's already happening Section */}
+
       <Box bg="white" w="100%" color="black">
         <Container
           maxW={{ base: "100vw", md: "container.lg" }}
@@ -464,7 +250,12 @@ const IndexPage = ({
                 alignItems="left"
                 width="100%"
               >
-                {articlesList}
+                {ArticlesList({
+                  articlesArray,
+                  currentArticle,
+                  setCurrentArticle,
+                  setCurrentArticleHover,
+                })}
               </VStack>
             </GridItem>
             <GridItem colSpan={3}>
@@ -480,10 +271,18 @@ const IndexPage = ({
           <VStack display={{ base: "flex", md: "none" }}>
             <Heading size="lg">It's already happening at 1°C</Heading>
             <Divider bg="red" height="3px" width="80%" my="5px" />
-            {articlesList}
+            {ArticlesList({
+              articlesArray,
+              currentArticle,
+              setCurrentArticle,
+              setCurrentArticleHover,
+            })}
           </VStack>
         </Container>
       </Box>
+
+      {/* The Science Section */}
+
       <Flex bg="#FEFBE0" w="100%" color="black">
         <Container maxW="container.lg" py="20px">
           <Heading size="lg" py="5px">
@@ -502,7 +301,9 @@ const IndexPage = ({
                 <Heading size="md" py="20px" fontWeight="semibold">
                   2. Carbon dioxide levels are at a record high
                 </Heading>
-                {co2HistoricLineChart}
+                <Center>
+                  {co2HistoricLineChart({ co2Data, co2SliderValue })}
+                </Center>
                 <Center>
                   <VStack width="100%">
                     <Slider
@@ -530,7 +331,7 @@ const IndexPage = ({
               <Heading size="md" py="20px" fontWeight="semibold">
                 3. Carbon dioxide levels are linked to Earth's temperature.
               </Heading>
-              {co2AndTempLineChart}
+              <Center>{co2AndTempLineChart({ co2AndTempData })}</Center>
             </Box>
 
             <Box width="100%">
@@ -538,7 +339,7 @@ const IndexPage = ({
                 4. Earth's temperature will rise rapidly if we don't cut down on
                 our carbon dioxide production
               </Heading>
-              {sspProjectionLineChart}
+              <Center>{sspProjectionLineChart({ sspProjections })}</Center>
             </Box>
           </SimpleGrid>
         </Container>

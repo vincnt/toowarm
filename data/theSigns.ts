@@ -1,6 +1,6 @@
-import { ArticleBox } from "../pages/index";
+import { NewsArticle } from "../components/NewsArticle";
 
-const articles: Record<string, ArticleBox> = {
+const articles: Record<string, NewsArticle> = {
   hotArticle1: {
     articleUrl:
       "https://www.theguardian.com/environment/2021/oct/29/apocalypse-soon-reluctant-middle-east-forced-to-open-eyes-to-climate-crisis",
