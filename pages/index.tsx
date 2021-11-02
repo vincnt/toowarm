@@ -1,4 +1,6 @@
 import Head from "next/head";
+import NextImage from "next/image";
+
 import {
   Box,
   Container,
@@ -19,17 +21,18 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
+  Switch,
 } from "@chakra-ui/react";
 import { InfoOutlineIcon } from "@chakra-ui/icons";
 import { useState, useEffect } from "react";
 import { TiMediaRewindOutline } from "react-icons/ti";
-
 import { articles } from "../data/theSigns";
 import {
   co2AndTempLineChart,
   co2HistoricLineChart,
   sspProjectionLineChart,
 } from "../components/Charts";
+import co2Graphic from "../public/images/co2-graphic.png";
 import { ArticlesList } from "../components/NewsArticle";
 
 export async function getStaticProps() {
@@ -59,6 +62,7 @@ const IndexPage = ({
   co2AndTempData: any;
   sspProjections: any;
 }) => {
+  const [switchValue, setSwitchValue] = useState(false);
   const maxArticles = 5;
   const articlesArray = Object.values(articles).slice(0, maxArticles + 1);
   const [currentArticleNumber, setCurrentArticleNumber] = useState(0);
@@ -303,60 +307,75 @@ const IndexPage = ({
               minChildWidth={{ base: "100%", md: "40%" }}
               width="90%"
               margin="auto"
-              spacing="30px"
+              spacing={{ base: "10px", md: "20px" }}
             >
-              <Box width="100%" height="100%">
-                <Heading size="sm" py="20px" fontWeight="semibold">
+              <Box width="100%" height="100%" pb={{ base: "10px", md: "20px" }}>
+                <Heading size="sm" fontWeight="bold">
                   1. Our activities produce carbon dioxide
                 </Heading>
-                <Text> Factories, vehicles, </Text>
-              </Box>
-              <Box width="100%" height="100%">
-                <Box>
-                  <Heading size="sm" py="20px" fontWeight="semibold">
-                    2. Carbon dioxide levels are at a record high
-                  </Heading>
-                  <Center>
-                    {co2HistoricLineChart({ co2Data, co2SliderValue })}
-                  </Center>
-                  <Center>
-                    <VStack width="100%">
-                      <Slider
-                        aria-label="co2-slider"
-                        defaultValue={Math.cbrt(maximumCo2Age)}
-                        min={5}
-                        max={Math.cbrt(maximumCo2Age)}
-                        onChange={(val) => setCo2SliderValue(val ** 3)}
-                        width="50%"
-                        colorScheme="gray"
-                      >
-                        <SliderTrack height="2px">
-                          <SliderFilledTrack />
-                        </SliderTrack>
-                        <SliderThumb height="15px" width="15px">
-                          <Box as={TiMediaRewindOutline} />
-                        </SliderThumb>
-                      </Slider>
-                      <Text> Adjust Time Range</Text>
-                    </VStack>
-                  </Center>
+                <Box height="200px" py="10px">
+                  <Text> Factories, vehicles, </Text>
                 </Box>
               </Box>
-              <Box width="100%">
-                <Heading size="sm" py="20px" fontWeight="semibold">
+              <Box width="100%" height="100%" pb={{ base: "5px", md: "20px" }}>
+                <Heading size="sm" fontWeight="bold">
+                  2. Carbon dioxide levels are at a record high
+                </Heading>
+                <Box height="200px" py="5px">
+                  {switchValue ? (
+                    <>
+                      {co2HistoricLineChart({ co2Data, co2SliderValue })}{" "}
+                      <VStack width="100%">
+                        <Slider
+                          aria-label="co2-slider"
+                          defaultValue={Math.cbrt(maximumCo2Age)}
+                          min={5}
+                          max={Math.cbrt(maximumCo2Age)}
+                          onChange={(val) => setCo2SliderValue(val ** 3)}
+                          width="50%"
+                          colorScheme="gray"
+                        >
+                          <SliderTrack height="2px">
+                            <SliderFilledTrack />
+                          </SliderTrack>
+                          <SliderThumb height="15px" width="15px">
+                            <Box as={TiMediaRewindOutline} />
+                          </SliderThumb>
+                        </Slider>
+                        <Text fontSize="sm"> Adjust Time Range</Text>
+                      </VStack>
+                    </>
+                  ) : (
+                    <Box width="90%" height="80%">
+                      <NextImage src={co2Graphic} alt="me" />
+                    </Box>
+                  )}
+                </Box>
+              </Box>
+              <Box width="100%" pt={{ base: "2px", md: "25px" }}>
+                <Heading size="sm" fontWeight="semibold">
                   3. Carbon dioxide levels are linked to Earth's temperature.
                 </Heading>
-                <Center>{co2AndTempLineChart({ co2AndTempData })}</Center>
+                {co2AndTempLineChart({ co2AndTempData })}
               </Box>
 
-              <Box width="100%">
-                <Heading size="sm" py="20px" fontWeight="semibold">
+              <Box width="100%" pt={{ base: "2px", md: "25px" }}>
+                <Heading size="sm" fontWeight="semibold">
                   4. Earth's temperature will rise rapidly if we don't cut down
                   on our carbon dioxide production
                 </Heading>
-                <Center>{sspProjectionLineChart({ sspProjections })}</Center>
+                {sspProjectionLineChart({ sspProjections })}
               </Box>
             </SimpleGrid>
+          </Box>
+          <Box py="20px" pl={{ base: "10px", md: "40px" }}>
+            <Switch
+              size="sm"
+              onChange={(event) => setSwitchValue(event.target.checked)}
+              color="gray"
+            >
+              Don't believe these graphs? See the real ones.
+            </Switch>
           </Box>
         </Container>
       </Flex>

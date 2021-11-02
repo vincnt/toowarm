@@ -5,6 +5,7 @@ import {
   XAxis,
   YAxis,
   ResponsiveContainer,
+  Label,
 } from "recharts";
 
 export const co2HistoricLineChart = ({ co2Data, co2SliderValue }: any) => (
@@ -20,7 +21,6 @@ export const co2HistoricLineChart = ({ co2Data, co2SliderValue }: any) => (
         type="number"
         domain={[1, co2SliderValue]}
         allowDataOverflow={true}
-        label={{ value: "Years Ago", dy: 15 }}
         ticks={[
           1, 2, 3, 5, 10, 30, 50, 100, 500, 1000, 2000, 5000, 10000, 50000,
           100000, 500000, 700000,
@@ -28,11 +28,18 @@ export const co2HistoricLineChart = ({ co2Data, co2SliderValue }: any) => (
         tickFormatter={(tick) => {
           return tick.toLocaleString();
         }}
-      />
-      <YAxis
-        label={{ value: "Carbon Dioxide", angle: -90, dx: -20 }}
-        domain={[150, 450]}
-      />
+        style={{ fontSize: "10px" }}
+      >
+        <Label value="Years Ago" dy={15} fontSize="12px" />
+      </XAxis>
+      <YAxis style={{ fontSize: "10px" }} domain={[150, 450]}>
+        <Label
+          value="Carbon Dioxide (ppmv)"
+          angle={-90}
+          dx={-20}
+          fontSize="12px"
+        />
+      </YAxis>
     </LineChart>
   </ResponsiveContainer>
 );
@@ -132,7 +139,7 @@ export const sspProjectionLineChart = ({ sspProjections }: any) => (
         label={{ value: "Year", dy: 15 }}
       />
       <YAxis
-        label={{ value: "Temperature Increase", angle: -90, dx: -20 }}
+        // label={{ value: "Temperature Increase", angle: -90, dx: -20 }}
         domain={[0, 6]}
       />
     </LineChart>
