@@ -32,6 +32,8 @@ import {
   co2HistoricLineChart,
   sspProjectionLineChart,
 } from "../components/Charts";
+
+import co2Breakdown from "../public/images/co2breakdown.png";
 import co2Graphic from "../public/images/co2-graphic.png";
 import co2AndTempGraphic from "../public/images/co2AndTemp-graphic.png";
 import projectedGraphic from "../public/images/projected temp graphic.png";
@@ -313,12 +315,21 @@ const IndexPage = ({
               spacing={{ base: "3px", md: "20px" }}
               pb="30px"
             >
-              <Box width="100%" height="100%" pb={{ base: "10px", md: "20px" }}>
+              <Box width="100%" height="100%" pb={{ base: "5px", md: "20px" }}>
                 <Heading size="sm" fontWeight="bold">
                   1. Our activities produce carbon dioxide
                 </Heading>
-                <Box height="200px" py="10px">
-                  <Text> Factories, vehicles, </Text>
+                <Box
+                  height={{
+                    base: "200px",
+                    md: "200px",
+                  }}
+                  pt="20px"
+                  width="80%"
+                  margin="auto"
+                  pr={{ base: "50px", md: "100px" }}
+                >
+                  <NextImage src={co2Breakdown} alt="me" />
                 </Box>
               </Box>
               <Box width="100%" height="100%" pb={{ base: "5px", md: "20px" }}>
