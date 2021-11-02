@@ -79,19 +79,29 @@ export const co2AndTempLineChart = ({ co2AndTempData }: any) => (
         tickFormatter={(tick) => {
           return tick.toLocaleString();
         }}
+        style={{ fontSize: "10px" }}
       />
       <YAxis
-        hide={true}
+        // hide={true}
+        style={{ fontSize: "10px" }}
         yAxisId="left"
-        // label={{ value: "Carbon Dioxide", angle: -90, dx: -20 }}
         domain={[150, 350]}
-      />
+      >
+        <Label
+          value="Carbon Dioxide (ppmv)"
+          angle={-90}
+          dx={-20}
+          fontSize="12px"
+        />
+      </YAxis>
       <YAxis
-        hide={true}
+        style={{ fontSize: "10px" }}
+        // hide={true}
         yAxisId="right"
         orientation="right"
-        // label={{ value: "Temperature", angle: 90, dx: 15 }}
-      />
+      >
+        <Label value="Temperature (°C)" angle={90} dx={15} fontSize="12px" />
+      </YAxis>
     </LineChart>
   </ResponsiveContainer>
 );
@@ -136,12 +146,18 @@ export const sspProjectionLineChart = ({ sspProjections }: any) => (
         type="number"
         scale="time"
         domain={[2010, 2100]}
-        label={{ value: "Year", dy: 15 }}
-      />
-      <YAxis
-        // label={{ value: "Temperature Increase", angle: -90, dx: -20 }}
-        domain={[0, 6]}
-      />
+        style={{ fontSize: "10px" }}
+      >
+        <Label value="Year" dy={15} fontSize="12px" />
+      </XAxis>
+      <YAxis domain={[0, 6]} style={{ fontSize: "10px" }}>
+        <Label
+          value="Temperature Increase (°C)"
+          angle={-90}
+          dx={-15}
+          fontSize="12px"
+        />
+      </YAxis>
     </LineChart>
   </ResponsiveContainer>
 );

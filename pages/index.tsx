@@ -33,6 +33,9 @@ import {
   sspProjectionLineChart,
 } from "../components/Charts";
 import co2Graphic from "../public/images/co2-graphic.png";
+import co2AndTempGraphic from "../public/images/co2AndTemp-graphic.png";
+import projectedGraphic from "../public/images/projected temp graphic.png";
+
 import { ArticlesList } from "../components/NewsArticle";
 
 export async function getStaticProps() {
@@ -302,12 +305,13 @@ const IndexPage = ({
             />
           </Box>
 
-          <Box bg="white">
+          <Flex bg="white">
             <SimpleGrid
               minChildWidth={{ base: "100%", md: "40%" }}
               width="90%"
               margin="auto"
-              spacing={{ base: "10px", md: "20px" }}
+              spacing={{ base: "3px", md: "20px" }}
+              pb="30px"
             >
               <Box width="100%" height="100%" pb={{ base: "10px", md: "20px" }}>
                 <Heading size="sm" fontWeight="bold">
@@ -321,10 +325,16 @@ const IndexPage = ({
                 <Heading size="sm" fontWeight="bold">
                   2. Carbon dioxide levels are at a record high
                 </Heading>
-                <Box height="200px" py="5px">
+                <Box
+                  height={{
+                    base: switchValue ? "250px" : "150px",
+                    md: "200px",
+                  }}
+                  py="5px"
+                >
                   {switchValue ? (
-                    <>
-                      {co2HistoricLineChart({ co2Data, co2SliderValue })}{" "}
+                    <Flex flexDirection="column">
+                      {co2HistoricLineChart({ co2Data, co2SliderValue })}
                       <VStack width="100%">
                         <Slider
                           aria-label="co2-slider"
@@ -344,7 +354,7 @@ const IndexPage = ({
                         </Slider>
                         <Text fontSize="sm"> Adjust Time Range</Text>
                       </VStack>
-                    </>
+                    </Flex>
                   ) : (
                     <Box width="90%" height="80%">
                       <NextImage src={co2Graphic} alt="me" />
@@ -352,23 +362,49 @@ const IndexPage = ({
                   )}
                 </Box>
               </Box>
-              <Box width="100%" pt={{ base: "2px", md: "25px" }}>
+              <Box
+                width="100%"
+                height={{ base: switchValue ? "250px" : "150px", md: "200px" }}
+                py={{ base: "10px", md: "30px" }}
+              >
                 <Heading size="sm" fontWeight="semibold">
                   3. Carbon dioxide levels are linked to Earth's temperature.
                 </Heading>
-                {co2AndTempLineChart({ co2AndTempData })}
+
+                {switchValue ? (
+                  <>{co2AndTempLineChart({ co2AndTempData })}</>
+                ) : (
+                  <Box width="80%" height="100%" py="40px">
+                    <NextImage src={co2AndTempGraphic} alt="me" />
+                  </Box>
+                )}
               </Box>
 
-              <Box width="100%" pt={{ base: "2px", md: "25px" }}>
+              <Box
+                width="100%"
+                height={{ base: switchValue ? "250px" : "150px", md: "200px" }}
+                py={{ base: "10px", md: "30px" }}
+              >
                 <Heading size="sm" fontWeight="semibold">
                   4. Earth's temperature will rise rapidly if we don't cut down
                   on our carbon dioxide production
                 </Heading>
-                {sspProjectionLineChart({ sspProjections })}
+                {switchValue ? (
+                  <Box pt="5px">
+                    {sspProjectionLineChart({ sspProjections })}
+                  </Box>
+                ) : (
+                  <Box width="100%" height="100%" pt="10px">
+                    <NextImage src={projectedGraphic} alt="me" />
+                  </Box>
+                )}
               </Box>
             </SimpleGrid>
-          </Box>
-          <Box py="20px" pl={{ base: "10px", md: "40px" }}>
+          </Flex>
+          <Box
+            py={{ base: "30px", md: "40px" }}
+            pl={{ base: "10px", md: "40px" }}
+          >
             <Switch
               size="sm"
               onChange={(event) => setSwitchValue(event.target.checked)}
