@@ -283,65 +283,81 @@ const IndexPage = ({
 
       {/* The Science Section */}
 
-      <Flex bg="#FEFBE0" w="100%" color="black">
+      <Flex w="100%" color="black" py="20px">
         <Container maxW="container.lg" py="20px">
-          <Heading size="lg" py="5px">
-            The Science
-          </Heading>
-          <Text>show technical details (tickbox)</Text>
-          <SimpleGrid minChildWidth={{ base: "100%", md: "50%" }} width="100%">
-            <Box width="100%" height="100%">
-              <Heading size="md" py="20px" fontWeight="semibold">
-                1. Our activities produce carbon dioxide
-              </Heading>
-              <Text> Factories, vehicles, </Text>
-            </Box>
-            <Box width="100%" height="100%">
-              <Box>
-                <Heading size="md" py="20px" fontWeight="semibold">
-                  2. Carbon dioxide levels are at a record high
-                </Heading>
-                <Center>
-                  {co2HistoricLineChart({ co2Data, co2SliderValue })}
-                </Center>
-                <Center>
-                  <VStack width="100%">
-                    <Slider
-                      aria-label="co2-slider"
-                      defaultValue={Math.cbrt(maximumCo2Age)}
-                      min={5}
-                      max={Math.cbrt(maximumCo2Age)}
-                      onChange={(val) => setCo2SliderValue(val ** 3)}
-                      width="50%"
-                      colorScheme="gray"
-                    >
-                      <SliderTrack height="2px">
-                        <SliderFilledTrack />
-                      </SliderTrack>
-                      <SliderThumb height="15px" width="15px">
-                        <Box as={TiMediaRewindOutline} />
-                      </SliderThumb>
-                    </Slider>
-                    <Text> Time Range</Text>
-                  </VStack>
-                </Center>
-              </Box>
-            </Box>
-            <Box width="100%">
-              <Heading size="md" py="20px" fontWeight="semibold">
-                3. Carbon dioxide levels are linked to Earth's temperature.
-              </Heading>
-              <Center>{co2AndTempLineChart({ co2AndTempData })}</Center>
-            </Box>
+          <Box py="30px">
+            <Heading size="lg" py="5px" px="5px" textAlign="center">
+              How does it work?
+            </Heading>
+            <Divider
+              bg="blue"
+              height="3px"
+              width="80%"
+              my="5px"
+              margin="auto"
+            />
+          </Box>
 
-            <Box width="100%">
-              <Heading size="md" py="20px" fontWeight="semibold">
-                4. Earth's temperature will rise rapidly if we don't cut down on
-                our carbon dioxide production
-              </Heading>
-              <Center>{sspProjectionLineChart({ sspProjections })}</Center>
-            </Box>
-          </SimpleGrid>
+          <Box bg="white">
+            <SimpleGrid
+              minChildWidth={{ base: "100%", md: "40%" }}
+              width="90%"
+              margin="auto"
+              spacing="30px"
+            >
+              <Box width="100%" height="100%">
+                <Heading size="sm" py="20px" fontWeight="semibold">
+                  1. Our activities produce carbon dioxide
+                </Heading>
+                <Text> Factories, vehicles, </Text>
+              </Box>
+              <Box width="100%" height="100%">
+                <Box>
+                  <Heading size="sm" py="20px" fontWeight="semibold">
+                    2. Carbon dioxide levels are at a record high
+                  </Heading>
+                  <Center>
+                    {co2HistoricLineChart({ co2Data, co2SliderValue })}
+                  </Center>
+                  <Center>
+                    <VStack width="100%">
+                      <Slider
+                        aria-label="co2-slider"
+                        defaultValue={Math.cbrt(maximumCo2Age)}
+                        min={5}
+                        max={Math.cbrt(maximumCo2Age)}
+                        onChange={(val) => setCo2SliderValue(val ** 3)}
+                        width="50%"
+                        colorScheme="gray"
+                      >
+                        <SliderTrack height="2px">
+                          <SliderFilledTrack />
+                        </SliderTrack>
+                        <SliderThumb height="15px" width="15px">
+                          <Box as={TiMediaRewindOutline} />
+                        </SliderThumb>
+                      </Slider>
+                      <Text> Adjust Time Range</Text>
+                    </VStack>
+                  </Center>
+                </Box>
+              </Box>
+              <Box width="100%">
+                <Heading size="sm" py="20px" fontWeight="semibold">
+                  3. Carbon dioxide levels are linked to Earth's temperature.
+                </Heading>
+                <Center>{co2AndTempLineChart({ co2AndTempData })}</Center>
+              </Box>
+
+              <Box width="100%">
+                <Heading size="sm" py="20px" fontWeight="semibold">
+                  4. Earth's temperature will rise rapidly if we don't cut down
+                  on our carbon dioxide production
+                </Heading>
+                <Center>{sspProjectionLineChart({ sspProjections })}</Center>
+              </Box>
+            </SimpleGrid>
+          </Box>
         </Container>
       </Flex>
     </>
