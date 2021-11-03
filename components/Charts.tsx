@@ -6,6 +6,7 @@ import {
   YAxis,
   ResponsiveContainer,
   Label,
+  CartesianGrid,
 } from "recharts";
 
 export const co2HistoricLineChart = ({ co2Data, co2SliderValue }: any) => (
@@ -111,33 +112,41 @@ export const sspProjectionLineChart = ({ sspProjections }: any) => (
       data={sspProjections}
       margin={{ top: 20, right: 0, left: 0, bottom: 20 }}
     >
+      <CartesianGrid></CartesianGrid>
       <Legend
         align="right"
         verticalAlign="middle"
         layout="vertical"
         formatter={(value: string, entry: any) => {
-          return <span style={{ fontSize: "12px" }}>{value}</span>;
+          return <span style={{ fontSize: "10px" }}>{value}</span>;
         }}
       />
       <Line
-        name="SSP51-1.9"
+        name="SSP1-1.9"
         type="monotone"
         dataKey="SSP1-19-IMAGE"
-        stroke="#1d13df"
+        stroke="#15b92b"
         dot={false}
       />
       <Line
         name="SSP1-2.6"
         type="monotone"
         dataKey="SSP1-26-IMAGE"
-        stroke="#f00a0a"
+        stroke="#076116"
+        dot={false}
+      />
+      <Line
+        name="SSP2-4.5"
+        type="monotone"
+        dataKey="SSP2-45-MESSAGE-GLOBIOM"
+        stroke="#974413"
         dot={false}
       />
       <Line
         name="SSP5-4.0"
         type="monotone"
         dataKey="SSP5-Baseline-REMIND-MAGPIE"
-        stroke="#0af030"
+        stroke="#f00a0a"
         dot={false}
       />
 

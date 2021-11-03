@@ -293,7 +293,7 @@ const IndexPage = ({
 
       {/* The Science Section */}
 
-      <Flex w="100%" color="black" py="20px">
+      <Flex w="100%" color="black" pt="20px">
         <Container maxW="container.lg" py="20px">
           <Box py="30px">
             <Heading size="lg" py="5px" px="5px" textAlign="center">
@@ -419,7 +419,7 @@ const IndexPage = ({
             </SimpleGrid>
           </Flex>
           <Box
-            py={{ base: "30px", md: "40px" }}
+            pt={{ base: "30px", md: "40px" }}
             pl={{ base: "10px", md: "40px" }}
           >
             <Switch
@@ -429,6 +429,74 @@ const IndexPage = ({
             >
               Don't believe these graphs? See the real ones.
             </Switch>
+          </Box>
+        </Container>
+      </Flex>
+
+      {/* How can I help */}
+
+      <Flex w="100%" color="black" py="20px">
+        <Container maxW="container.lg" py="20px">
+          <Box py="30px">
+            <Heading size="lg" py="5px" px="5px" textAlign="center">
+              How can I do my part?
+            </Heading>
+            <Divider
+              bg="green"
+              height="3px"
+              width="80%"
+              my="5px"
+              margin="auto"
+            />
+          </Box>
+          <Box borderStyle="solid" borderColor="black" borderWidth="1px">
+            <Box p="25px">
+              <Heading size="md" fontWeight="normal" py="15px">
+                The Government
+              </Heading>
+              <Box pl="20px" py="5px">
+                <Text fontWeight="semibold">Carbon Tax</Text>
+                <Text>Higher carbon taxes on corporations.</Text>
+              </Box>
+              <Box pl="20px" py="5px">
+                <Text fontWeight="semibold">Renewables Incentives</Text>
+                <Text>
+                  Subsidise renewable energies or tax carbon production.
+                </Text>
+              </Box>
+              <Box pl="20px" py="5px">
+                <Text fontWeight="semibold">Renewables Research</Text>
+                <Text> Speed up research into fusion, solar power</Text>
+              </Box>
+            </Box>
+          </Box>
+          <Box
+            borderStyle="solid"
+            borderColor="black"
+            borderWidth="1px"
+            mt="15px"
+          >
+            <Box p="25px">
+              <Heading size="md" fontWeight="normal" py="15px">
+                You
+              </Heading>
+              <Box pl="20px" py="5px">
+                <Text fontWeight="semibold">Vote</Text>
+                <Text>Vote for the governemnt to achieve it's goals</Text>
+              </Box>
+              <Box pl="20px" py="5px">
+                <Text fontWeight="semibold">Use green transport</Text>
+                <Text>Use public transport. fly less, only when needed.</Text>
+              </Box>
+              <Box pl="20px" py="5px">
+                <Text fontWeight="semibold">Use energy efficient devices</Text>
+                <Text>helps marginally</Text>
+              </Box>
+              <Box pl="20px" py="5px">
+                <Text fontWeight="semibold">Eat less meat</Text>
+                <Text>helps marginally</Text>
+              </Box>
+            </Box>
           </Box>
         </Container>
       </Flex>
