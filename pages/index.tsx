@@ -33,7 +33,8 @@ import {
   sspProjectionLineChart,
 } from "../components/Charts";
 
-import co2Breakdown from "../public/images/co2breakdown.png";
+import co2Breakdown from "../public/images/co2 production graphic.png";
+import co2AdvancedBreakdown from "../public/images/co2-emissions-pie.png";
 import co2Graphic from "../public/images/co2-graphic.png";
 import co2AndTempGraphic from "../public/images/co2AndTemp-graphic.png";
 import projectedGraphic from "../public/images/projected temp graphic.png";
@@ -324,12 +325,17 @@ const IndexPage = ({
                     base: "200px",
                     md: "200px",
                   }}
-                  pt="20px"
-                  width="80%"
-                  margin="auto"
-                  pr={{ base: "50px", md: "100px" }}
+                  width="100%"
                 >
-                  <NextImage src={co2Breakdown} alt="me" />
+                  {switchValue ? (
+                    <Box width="65%">
+                      <NextImage src={co2AdvancedBreakdown} />
+                    </Box>
+                  ) : (
+                    <Box pt="20px" width="80%">
+                      <NextImage src={co2Breakdown} alt="me" />
+                    </Box>
+                  )}
                 </Box>
               </Box>
               <Box width="100%" height="100%" pb={{ base: "5px", md: "20px" }}>
