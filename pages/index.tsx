@@ -332,23 +332,23 @@ const IndexPage = ({
                     <>
                       <Box width="100%"> {co2BreakdownPie()}</Box>
                       <Text fontSize="xs" color="gray">
-                        Source:
+                        Source:{" "}
                         <Link
                           href="https://ourworldindata.org/emissions-by-sector"
                           isExternal
                         >
-                          https://ourworldindata.org/emissions-by-sector
+                          Our World In Data
                         </Link>
                       </Text>
                     </>
                   ) : (
-                    <Box pt="20px" width="80%">
+                    <Box pt={{ base: "20px", md: "40px" }} width="80%">
                       <NextImage src={co2Breakdown} alt="me" />
                     </Box>
                   )}
                 </Box>
               </Box>
-              <Box width="100%" height="100%" mb={{ base: "40px", md: "35px" }}>
+              <Box width="100%" height="100%" mb={{ base: "55px", md: "35px" }}>
                 <Heading size="sm" fontWeight="bold">
                   2. Carbon dioxide levels are at a record high
                 </Heading>
@@ -357,12 +357,12 @@ const IndexPage = ({
                     base: switchValue ? "250px" : "150px",
                     md: "200px",
                   }}
-                  py="5px"
+                  mt={{ base: "20px", md: "10px" }}
                 >
                   {switchValue ? (
                     <Flex flexDirection="column">
                       {co2HistoricLineChart({ co2Data, co2SliderValue })}
-                      <VStack width="100%">
+                      <VStack width="100%" pb="5px">
                         <Slider
                           aria-label="co2-slider"
                           defaultValue={Math.cbrt(maximumCo2Age)}
@@ -380,19 +380,19 @@ const IndexPage = ({
                           </SliderThumb>
                         </Slider>
                         <Text fontSize="sm"> Adjust Time Range</Text>
-                        <Text fontSize="xs" color="gray">
-                          Source:
-                          <Link
-                            href="https://www.ncei.noaa.gov/access/paleo-search/study/17975"
-                            isExternal
-                          >
-                            https://www.ncei.noaa.gov/access/paleo-search/study/17975
-                          </Link>
-                        </Text>
                       </VStack>
+                      <Text fontSize="xs" color="gray">
+                        Source:{" "}
+                        <Link
+                          href="https://www.ncei.noaa.gov/access/paleo-search/study/17975"
+                          isExternal
+                        >
+                          National Centers for Environmental Information (NCEI)
+                        </Link>
+                      </Text>
                     </Flex>
                   ) : (
-                    <Box width="90%" height="80%">
+                    <Box width="90%" height="80%" pt="20px">
                       <NextImage src={co2Graphic} alt="me" />
                     </Box>
                   )}
@@ -401,14 +401,25 @@ const IndexPage = ({
               <Box
                 width="100%"
                 height={{ base: switchValue ? "250px" : "150px", md: "200px" }}
-                my={{ base: "10px", md: "50px" }}
+                my={{ base: "30px", md: "50px" }}
               >
-                <Heading size="sm" fontWeight="semibold">
+                <Heading size="sm" fontWeight="semibold" pb="10px">
                   3. Carbon dioxide levels are linked to Earth's temperature.
                 </Heading>
 
                 {switchValue ? (
-                  <>{co2AndTempLineChart({ co2AndTempData })}</>
+                  <>
+                    {co2AndTempLineChart({ co2AndTempData })}
+                    <Text fontSize="xs" color="gray">
+                      Source:{" "}
+                      <Link
+                        href="http://www.climatedata.info/proxies/data-downloads/"
+                        isExternal
+                      >
+                        climatedata.info
+                      </Link>
+                    </Text>
+                  </>
                 ) : (
                   <Box width="80%" height="100%" py="40px">
                     <NextImage src={co2AndTempGraphic} alt="me" />
@@ -419,15 +430,21 @@ const IndexPage = ({
               <Box
                 width="100%"
                 height={{ base: switchValue ? "250px" : "150px", md: "200px" }}
-                mt={{ base: "10px", md: "50px" }}
+                mt={{ base: "20px", md: "50px" }}
               >
-                <Heading size="sm" fontWeight="semibold">
+                <Heading size="sm" fontWeight="semibold" pb="10px">
                   4. Earth's temperature will rise rapidly if we don't cut down
                   on our carbon dioxide production
                 </Heading>
                 {switchValue ? (
                   <Box pt="5px">
                     {sspProjectionLineChart({ sspProjections })}
+                    <Text fontSize="xs" color="gray">
+                      Source:{" "}
+                      <Link href="https://tntcat.iiasa.ac.at/SspDb" isExternal>
+                        SSP Database
+                      </Link>
+                    </Text>
                   </Box>
                 ) : (
                   <Box width="100%" height="100%" pt="10px">
@@ -439,7 +456,7 @@ const IndexPage = ({
           </Flex>
           <Center>
             <Box
-              mt={{ base: switchValue ? "10px" : "30px", md: "10px" }}
+              mt={{ base: switchValue ? "30px" : "50px", md: "10px" }}
               pl={{ base: "10px", md: "10px" }}
             >
               <Switch
