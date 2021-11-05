@@ -99,10 +99,11 @@ const IndexPage = ({
     }
   }, [currentArticleNumber]);
 
+  const peachColour = "#d87e68";
   return (
     <>
       <Head>
-        <title>Climate change in one page - It's Getting Too Warm</title>
+        <title>one page climate change - It's Getting Too Warm</title>
         <link
           rel="icon"
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#129397;</text></svg>"
@@ -111,16 +112,21 @@ const IndexPage = ({
       </Head>
       <style jsx global>{`
         body {
-          background-color: #d87e68 !important;
+          background-color: ${peachColour} !important;
         }
       `}</style>
 
       {/* Hero Section */}
-      <Container maxW="container.xl" bg="#f8f8ff">
+      <Container
+        maxW={{ base: "95%", md: "container.xl" }}
+        bg="#f8f8ff"
+        borderRadius="25px"
+        my={{ base: "20px", md: "50px" }}
+      >
         <Box
           w="100%"
           color="black"
-          pt={{ sm: "20px", md: "100px" }}
+          pt={{ base: "40px", md: "100px" }}
           pb="20px"
           margin="auto"
         >
@@ -137,7 +143,7 @@ const IndexPage = ({
               backgroundPosition="center center"
               height="15px"
               width={{ base: "90%", md: "70%" }}
-              mt="20px"
+              mt="50px"
             ></Box>
           </Center>
           <Flex width={{ base: "90%", md: "70%" }} margin="auto">
@@ -196,7 +202,7 @@ const IndexPage = ({
                     <VStack height="100%">
                       <Spacer />
                       <Box>
-                        <Text pl="50px" color="#ff0000" fontWeight="bold">
+                        <Text pl="50px" color="black" fontWeight="bold">
                           +3°C
                         </Text>
                       </Box>
@@ -224,7 +230,7 @@ const IndexPage = ({
         <Box
           width={{ sm: "80%", md: "80%" }}
           margin="auto"
-          py={{ base: "30px", md: "80px" }}
+          py={{ base: "30px", md: "60px" }}
           mb={{ sm: "20px", md: "20px" }}
           px="15px"
         >
@@ -277,9 +283,15 @@ const IndexPage = ({
             <Divider bg="black" height="2px" margin="auto" width="90%" />
           </Box>
         </Box>
+      </Container>
 
-        {/* It's already happening Section */}
-
+      {/* It's already happening Section */}
+      <Container
+        maxW={{ base: "95%", md: "container.xl" }}
+        bg="#f8f8ff"
+        borderRadius="25px"
+        my="50px"
+      >
         <Box w="100%" color="black" id="evidence" pb="20px">
           <Container maxW={{ base: "100vw", md: "container.lg" }} py="10px">
             <Grid
@@ -330,9 +342,15 @@ const IndexPage = ({
             </VStack>
           </Container>
         </Box>
+      </Container>
 
-        {/* The Science Section */}
-
+      {/* The Science Section */}
+      <Container
+        maxW={{ base: "95%", md: "container.xl" }}
+        bg="#f8f8ff"
+        borderRadius="25px"
+        my="50px"
+      >
         <Flex w="100%" color="black" id="howItWorks" pb="20px">
           <Container maxW="container.lg" py="20px">
             <Box py="30px">
@@ -535,9 +553,15 @@ const IndexPage = ({
             </Center>
           </Container>
         </Flex>
+      </Container>
 
-        {/* How can I help */}
-
+      {/* How can I help */}
+      <Container
+        maxW={{ base: "95%", md: "container.xl" }}
+        bg="#f8f8ff"
+        borderRadius="25px"
+        my="50px"
+      >
         <Flex w="100%" color="black" pb="20px" id="howToHelp">
           <Container maxW="container.lg" py="20px">
             <Box py="30px">
@@ -605,7 +629,14 @@ const IndexPage = ({
             </Box>
           </Container>
         </Flex>
+      </Container>
 
+      <Container
+        maxW={{ base: "95%", md: "container.xl" }}
+        bg="#f8f8ff"
+        borderRadius="25px"
+        my="50px"
+      >
         <Flex w="100%" color="black" pb="20px" id="faq">
           <Container maxW="container.lg" py="20px">
             <Box py="30px">
@@ -613,7 +644,7 @@ const IndexPage = ({
                 FAQ
               </Heading>
               <Divider
-                bg="green"
+                bg="orange"
                 height="3px"
                 width="80%"
                 my="5px"
