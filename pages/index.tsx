@@ -22,6 +22,7 @@ import {
   SliderFilledTrack,
   SliderThumb,
   Switch,
+  Link,
 } from "@chakra-ui/react";
 import { InfoOutlineIcon } from "@chakra-ui/icons";
 import { useState, useEffect } from "react";
@@ -31,10 +32,10 @@ import {
   co2AndTempLineChart,
   co2HistoricLineChart,
   sspProjectionLineChart,
+  co2BreakdownPie,
 } from "../components/Charts";
 
 import co2Breakdown from "../public/images/co2 production graphic.png";
-import co2AdvancedBreakdown from "../public/images/co2-emissions-pie.png";
 import co2Graphic from "../public/images/co2-graphic.png";
 import co2AndTempGraphic from "../public/images/co2AndTemp-graphic.png";
 import projectedGraphic from "../public/images/projected temp graphic.png";
@@ -316,21 +317,30 @@ const IndexPage = ({
               spacing={{ base: "3px", md: "20px" }}
               pb="30px"
             >
-              <Box width="100%" height="100%" pb={{ base: "5px", md: "20px" }}>
+              <Box width="100%" height="100%" mb={{ base: "5px", md: "35px" }}>
                 <Heading size="sm" fontWeight="bold">
                   1. Our activities produce carbon dioxide
                 </Heading>
                 <Box
                   height={{
-                    base: "200px",
+                    base: switchValue ? "300px" : "180px",
                     md: "200px",
                   }}
                   width="100%"
                 >
                   {switchValue ? (
-                    <Box width="65%">
-                      <NextImage src={co2AdvancedBreakdown} />
-                    </Box>
+                    <>
+                      <Box width="100%"> {co2BreakdownPie()}</Box>
+                      <Text fontSize="xs" color="gray">
+                        Source:
+                        <Link
+                          href="https://ourworldindata.org/emissions-by-sector"
+                          isExternal
+                        >
+                          https://ourworldindata.org/emissions-by-sector
+                        </Link>
+                      </Text>
+                    </>
                   ) : (
                     <Box pt="20px" width="80%">
                       <NextImage src={co2Breakdown} alt="me" />
@@ -338,7 +348,7 @@ const IndexPage = ({
                   )}
                 </Box>
               </Box>
-              <Box width="100%" height="100%" pb={{ base: "5px", md: "20px" }}>
+              <Box width="100%" height="100%" mb={{ base: "40px", md: "35px" }}>
                 <Heading size="sm" fontWeight="bold">
                   2. Carbon dioxide levels are at a record high
                 </Heading>
@@ -370,6 +380,15 @@ const IndexPage = ({
                           </SliderThumb>
                         </Slider>
                         <Text fontSize="sm"> Adjust Time Range</Text>
+                        <Text fontSize="xs" color="gray">
+                          Source:
+                          <Link
+                            href="https://www.ncei.noaa.gov/access/paleo-search/study/17975"
+                            isExternal
+                          >
+                            https://www.ncei.noaa.gov/access/paleo-search/study/17975
+                          </Link>
+                        </Text>
                       </VStack>
                     </Flex>
                   ) : (
@@ -382,7 +401,7 @@ const IndexPage = ({
               <Box
                 width="100%"
                 height={{ base: switchValue ? "250px" : "150px", md: "200px" }}
-                py={{ base: "10px", md: "30px" }}
+                my={{ base: "10px", md: "50px" }}
               >
                 <Heading size="sm" fontWeight="semibold">
                   3. Carbon dioxide levels are linked to Earth's temperature.
@@ -400,7 +419,7 @@ const IndexPage = ({
               <Box
                 width="100%"
                 height={{ base: switchValue ? "250px" : "150px", md: "200px" }}
-                py={{ base: "10px", md: "30px" }}
+                mt={{ base: "10px", md: "50px" }}
               >
                 <Heading size="sm" fontWeight="semibold">
                   4. Earth's temperature will rise rapidly if we don't cut down
@@ -418,18 +437,21 @@ const IndexPage = ({
               </Box>
             </SimpleGrid>
           </Flex>
-          <Box
-            pt={{ base: "30px", md: "40px" }}
-            pl={{ base: "10px", md: "40px" }}
-          >
-            <Switch
-              size="sm"
-              onChange={(event) => setSwitchValue(event.target.checked)}
-              color="gray"
+          <Center>
+            <Box
+              mt={{ base: switchValue ? "10px" : "30px", md: "10px" }}
+              pl={{ base: "10px", md: "10px" }}
             >
-              Don't believe these graphs? See the real ones.
-            </Switch>
-          </Box>
+              <Switch
+                size="md"
+                onChange={(event) => setSwitchValue(event.target.checked)}
+                color="gray"
+                colorScheme="red"
+              >
+                Don't believe these graphs? See the real ones.
+              </Switch>
+            </Box>
+          </Center>
         </Container>
       </Flex>
 
@@ -482,7 +504,7 @@ const IndexPage = ({
               </Heading>
               <Box pl="20px" py="5px">
                 <Text fontWeight="semibold">Vote</Text>
-                <Text>Vote for the governemnt to achieve it's goals</Text>
+                <Text>Vote for the government to achieve it's goals</Text>
               </Box>
               <Box pl="20px" py="5px">
                 <Text fontWeight="semibold">Use green transport</Text>
