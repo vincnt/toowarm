@@ -40,10 +40,10 @@ import {
   co2BreakdownPie,
 } from "../components/Charts";
 
-import co2Breakdown from "../public/images/co2 production graphic.png";
-import co2Graphic from "../public/images/co2-graphic.png";
-import co2AndTempGraphic from "../public/images/co2Trap.png";
-import projectedGraphic from "../public/images/projected temp graphic.png";
+import co2Breakdown from "../public/images/co2-by-sector.png";
+import co2Graphic from "../public/images/co2-levels.png";
+import co2AndTempGraphic from "../public/images/co2-trap.png";
+import projectedGraphic from "../public/images/temperature-projections.png";
 
 import { ArticlesList } from "../components/NewsArticle";
 
@@ -353,7 +353,7 @@ const IndexPage = ({
                 minChildWidth={{ base: "100%", md: "40%" }}
                 width="90%"
                 margin="auto"
-                spacing={{ base: "3px", md: "20px" }}
+                spacing={{ base: "3px", md: "30px" }}
                 pb="30px"
               >
                 <Box
@@ -453,7 +453,7 @@ const IndexPage = ({
                     md: "200px",
                   }}
                   mb={{ base: switchValue ? "10px" : "40px", md: "50px" }}
-                  mt={{ base: switchValue ? "50px" : "10px", md: "50px" }}
+                  mt={{ base: switchValue ? "50px" : "20px", md: "50px" }}
                 >
                   <Heading size="sm" fontWeight="semibold" pb="10px">
                     3. Carbon dioxide traps heat, increasing Earth's
@@ -478,6 +478,7 @@ const IndexPage = ({
                       width="70%"
                       height="100%"
                       my={{ base: "20px", md: "5px" }}
+                      margin="auto"
                     >
                       <NextImage src={co2AndTempGraphic} alt="me" />
                     </Box>
