@@ -23,6 +23,11 @@ import {
   SliderThumb,
   Switch,
   Link,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
 } from "@chakra-ui/react";
 import { InfoOutlineIcon } from "@chakra-ui/icons";
 import { useState, useEffect } from "react";
@@ -537,6 +542,42 @@ const IndexPage = ({
               </Box>
             </Box>
           </Box>
+        </Container>
+      </Flex>
+
+      <Flex w="100%" color="black" py="20px">
+        <Container maxW="container.lg" py="20px">
+          <Box py="30px">
+            <Heading size="lg" py="5px" px="5px" textAlign="center">
+              FAQ
+            </Heading>
+            <Divider
+              bg="green"
+              height="3px"
+              width="80%"
+              my="5px"
+              margin="auto"
+            />
+          </Box>
+
+          <Accordion>
+            <AccordionItem>
+              <h2>
+                <AccordionButton>
+                  <Box flex="1" textAlign="left">
+                    Section 1 title
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel pb={4}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
         </Container>
       </Flex>
     </>
