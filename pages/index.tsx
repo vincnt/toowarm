@@ -103,7 +103,6 @@ const IndexPage = ({
     <>
       <Head>
         <title>Climate change in one page - It's Getting Too Warm</title>
-        {/* <link rel="shortcut icon" href="/favicon.svg" /> */}
         <link
           rel="icon"
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#129397;</text></svg>"
@@ -112,7 +111,7 @@ const IndexPage = ({
       </Head>
       <style jsx global>{`
         body {
-          background-color: #cc5709;
+          background-color: #d87e68 !important;
         }
       `}</style>
 
