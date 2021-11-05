@@ -102,7 +102,7 @@ const IndexPage = ({
   return (
     <>
       <Head>
-        <title>Climate Change Summary - It's Getting Too Warm</title>
+        <title>Climate change in one page - It's Getting Too Warm</title>
         <link rel="shortcut icon" href="/favicon.svg" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
