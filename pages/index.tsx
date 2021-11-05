@@ -103,6 +103,7 @@ const IndexPage = ({
     <>
       <Head>
         <title>Climate Change Summary - It's Getting Too Warm</title>
+        <link rel="shortcut icon" href="/favicon.svg" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
@@ -127,11 +128,11 @@ const IndexPage = ({
             backgroundRepeat="no-repeat"
             backgroundPosition="center center"
             height="15px"
-            width="70%"
-            mt="10px"
+            width={{ base: "90%", md: "70%" }}
+            mt="20px"
           ></Box>
         </Center>
-        <Flex width="70%" margin="auto">
+        <Flex width={{ base: "90%", md: "70%" }} margin="auto">
           <HStack spacing="1px" width="100%" justifyContent="space-between">
             <HStack>
               <VStack spacing="1px">
@@ -229,25 +230,25 @@ const IndexPage = ({
 
             <Text>
               <Text as="span" fontWeight="bold">
-                Extreme Temperatures:
+                &#10052; Extreme Temperatures:
               </Text>{" "}
               Freezing winters and unbearable summers.
             </Text>
             <Text>
               <Text as="span" fontWeight="bold">
-                More Floods:
+                &#127754; More Floods:
               </Text>{" "}
               Rising sea levels will increase frequency and amount of flooding.
             </Text>
             <Text>
               <Text as="span" fontWeight="bold">
-                Droughts and Wildfires:
+                &#128293; Droughts and Wildfires:
               </Text>{" "}
               Will result in loss of life as well as food and water shortages.
             </Text>
             <Text>
               <Text as="span" fontWeight="bold">
-                Loss of wildlife
+                &#128060; Loss of Wildlife :
               </Text>{" "}
               Habitats are thrown off balance, plants and animals will die,
               resulting in food shortages.
