@@ -284,7 +284,7 @@ const renderCustomizedLabel = ({
   index,
   name,
 }: any) => {
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const radius = (innerRadius + (outerRadius - innerRadius) * 0.5) * 1.2;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
@@ -298,7 +298,6 @@ const renderCustomizedLabel = ({
       fontSize="9px"
     >
       {name}
-      {/* {`${(percent * 100).toFixed(0)}%`} */}
     </text>
   );
 };
@@ -317,6 +316,7 @@ export const co2BreakdownPie = () => (
         outerRadius={90}
         fill="#8884d8"
         label={renderCustomizedLabel}
+        isAnimationActive={false}
         labelLine={false}
       >
         {co2InnerData.map((entry, index) => (

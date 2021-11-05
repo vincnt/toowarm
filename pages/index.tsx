@@ -391,7 +391,7 @@ const IndexPage = ({
                   >
                     {switchValue ? (
                       <>
-                        <Box width="100%"> {co2BreakdownPie()}</Box>
+                        <Box width="80%"> {co2BreakdownPie()}</Box>
                         <Text fontSize="xs" color="gray">
                           Source:{" "}
                           <Link
