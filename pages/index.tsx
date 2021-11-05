@@ -100,6 +100,8 @@ const IndexPage = ({
   }, [currentArticleNumber]);
 
   const peachColour = "#d87e68";
+  const offWhite = "#f8f8ff";
+
   return (
     <>
       <Head>
@@ -288,7 +290,7 @@ const IndexPage = ({
       {/* It's already happening Section */}
       <Container
         maxW={{ base: "95%", md: "container.xl" }}
-        bg="#f8f8ff"
+        bg={offWhite}
         borderRadius="25px"
         my="50px"
       >
@@ -347,7 +349,7 @@ const IndexPage = ({
       {/* The Science Section */}
       <Container
         maxW={{ base: "95%", md: "container.xl" }}
-        bg="#f8f8ff"
+        bg={offWhite}
         borderRadius="25px"
         my="50px"
       >
@@ -558,7 +560,7 @@ const IndexPage = ({
       {/* How can I help */}
       <Container
         maxW={{ base: "95%", md: "container.xl" }}
-        bg="#f8f8ff"
+        bg={offWhite}
         borderRadius="25px"
         my="50px"
       >
@@ -672,7 +674,35 @@ const IndexPage = ({
             </Accordion>
           </Container>
         </Flex>
-        {/* Big boy container */}
+        <Box position="relative" width="100%">
+          <Box
+            bg={offWhite}
+            position="absolute"
+            borderRadius="50%"
+            width="30px"
+            height="20px"
+            top="-10px"
+            left="5px"
+          />
+          <Box
+            bg={offWhite}
+            position="absolute"
+            borderRadius="50%"
+            width="30px"
+            height="60px"
+            top="-15px"
+            left="15px"
+          />
+          <Box
+            bg={offWhite}
+            position="absolute"
+            borderRadius="50%"
+            width="30px"
+            height="60px"
+            top="-15px"
+            left="25px"
+          />
+        </Box>
       </Container>
     </>
   );
