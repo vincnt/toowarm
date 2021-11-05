@@ -112,7 +112,7 @@ const IndexPage = ({
       </Head>
       <style jsx global>{`
         body {
-          background-color: ${peachColour} !important;
+          background-image: linear-gradient(${peachColour}, red) !important;
         }
       `}</style>
 
