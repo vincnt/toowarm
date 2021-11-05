@@ -42,7 +42,7 @@ import {
 
 import co2Breakdown from "../public/images/co2 production graphic.png";
 import co2Graphic from "../public/images/co2-graphic.png";
-import co2AndTempGraphic from "../public/images/co2AndTemp-graphic.png";
+import co2AndTempGraphic from "../public/images/co2Trap.png";
 import projectedGraphic from "../public/images/projected temp graphic.png";
 
 import { ArticlesList } from "../components/NewsArticle";
@@ -442,7 +442,7 @@ const IndexPage = ({
                 my={{ base: "30px", md: "50px" }}
               >
                 <Heading size="sm" fontWeight="semibold" pb="10px">
-                  3. Carbon dioxide levels are linked to Earth's temperature.
+                  3. Carbon dioxide traps heat, increasing Earth's temperature.
                 </Heading>
 
                 {switchValue ? (
@@ -459,7 +459,11 @@ const IndexPage = ({
                     </Text>
                   </>
                 ) : (
-                  <Box width="80%" height="100%" py="40px">
+                  <Box
+                    width="70%"
+                    height="100%"
+                    my={{ base: "20px", md: "5px" }}
+                  >
                     <NextImage src={co2AndTempGraphic} alt="me" />
                   </Box>
                 )}
@@ -468,7 +472,7 @@ const IndexPage = ({
               <Box
                 width="100%"
                 height={{ base: switchValue ? "250px" : "150px", md: "200px" }}
-                mt={{ base: "20px", md: "50px" }}
+                mt={{ base: "40px", md: "50px" }}
               >
                 <Heading size="sm" fontWeight="semibold" pb="10px">
                   4. Earth's temperature will rise rapidly if we don't cut down
