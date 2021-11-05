@@ -243,26 +243,24 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: "The Signs",
+    label: "Science",
     children: [
       {
-        label: "Sign 1",
-        subLabel: "This is sign 1",
-        href: "#",
+        label: "Evidence",
+        href: "#evidence",
       },
       {
-        label: "Sign 2",
-        subLabel: "This is sign 2",
-        href: "#",
+        label: "How climate change works",
+        href: "#howItWorks",
       },
     ],
   },
   {
-    label: "Science",
-    href: "#",
+    label: "How to help",
+    href: "#howToHelp",
   },
   {
-    label: "Solutions",
-    href: "#",
+    label: "FAQ",
+    href: "#faq",
   },
 ];

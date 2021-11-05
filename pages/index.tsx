@@ -223,26 +223,54 @@ const IndexPage = ({
           <Spacer />
 
           <VStack>
-            <Flex direction="row" wrap="wrap" margin="0" padding="0">
-              <Text color="red" fontWeight="bold" px="2px">
-                At +3°C
-              </Text>
-              <Text px="2px">
-                Extreme Temperatures, Floods, Food Shortages, Droughts and Loss
-                of Wildlife
-              </Text>
-              <Text fontWeight="bold" px="2px">
-                become the norm.
-              </Text>
-            </Flex>
+            <Text color="red" fontWeight="bold" fontSize="lg">
+              What happens when the Earth gets warmer?
+            </Text>
+
+            <Text>
+              <Text as="span" fontWeight="bold">
+                Extreme Temperatures:
+              </Text>{" "}
+              Freezing winters and unbearable summers.
+            </Text>
+            <Text>
+              <Text as="span" fontWeight="bold">
+                More Floods:
+              </Text>{" "}
+              Rising sea levels will increase frequency and amount of flooding.
+            </Text>
+            <Text>
+              <Text as="span" fontWeight="bold">
+                Droughts and Wildfires:
+              </Text>{" "}
+              Will result in loss of life as well as food and water shortages.
+            </Text>
+            <Text>
+              <Text as="span" fontWeight="bold">
+                Loss of wildlife
+              </Text>{" "}
+              Habitats are thrown off balance, plants and animals will die,
+              resulting in food shortages.
+            </Text>
           </VStack>
           <Spacer />
         </HStack>
+        <Box width={{ base: "100%", md: "60%" }} margin="auto" mt="40px">
+          <Heading
+            fontSize="2xl"
+            fontWeight="normal"
+            textAlign="center"
+            mb="5px"
+          >
+            At +3°C these events become extremely common!
+          </Heading>
+          <Divider bg="black" height="2px" margin="auto" width="90%" />
+        </Box>
       </Box>
 
       {/* It's already happening Section */}
 
-      <Box bg="white" w="100%" color="black">
+      <Box bg="white" w="100%" color="black" id="evidence" pb="20px">
         <Container
           maxW={{ base: "100vw", md: "container.lg" }}
           bg="white"
@@ -299,7 +327,7 @@ const IndexPage = ({
 
       {/* The Science Section */}
 
-      <Flex w="100%" color="black" pt="20px">
+      <Flex w="100%" color="black" id="howItWorks" pb="20px">
         <Container maxW="container.lg" py="20px">
           <Box py="30px">
             <Heading size="lg" py="5px" px="5px" textAlign="center">
@@ -479,7 +507,7 @@ const IndexPage = ({
 
       {/* How can I help */}
 
-      <Flex w="100%" color="black" py="20px">
+      <Flex w="100%" color="black" pb="20px" id="howToHelp">
         <Container maxW="container.lg" py="20px">
           <Box py="30px">
             <Heading size="lg" py="5px" px="5px" textAlign="center">
@@ -545,7 +573,7 @@ const IndexPage = ({
         </Container>
       </Flex>
 
-      <Flex w="100%" color="black" py="20px">
+      <Flex w="100%" color="black" pb="20px" id="faq">
         <Container maxW="container.lg" py="20px">
           <Box py="30px">
             <Heading size="lg" py="5px" px="5px" textAlign="center">
