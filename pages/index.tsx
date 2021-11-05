@@ -386,7 +386,11 @@ const IndexPage = ({
                   )}
                 </Box>
               </Box>
-              <Box width="100%" height="100%" mb={{ base: "55px", md: "35px" }}>
+              <Box
+                width="100%"
+                height="100%"
+                mb={{ base: switchValue ? "0px" : "50px", md: "35px" }}
+              >
                 <Heading size="sm" fontWeight="bold">
                   2. Carbon dioxide levels are at a record high
                 </Heading>
@@ -395,7 +399,7 @@ const IndexPage = ({
                     base: switchValue ? "250px" : "150px",
                     md: "200px",
                   }}
-                  mt={{ base: "20px", md: "10px" }}
+                  mt={{ base: switchValue ? "10px" : "10px", md: "10px" }}
                 >
                   {switchValue ? (
                     <Flex flexDirection="column">
@@ -439,7 +443,8 @@ const IndexPage = ({
               <Box
                 width="100%"
                 height={{ base: switchValue ? "250px" : "150px", md: "200px" }}
-                my={{ base: "30px", md: "50px" }}
+                mb={{ base: switchValue ? "10px" : "40px", md: "50px" }}
+                mt={{ base: switchValue ? "50px" : "10px", md: "50px" }}
               >
                 <Heading size="sm" fontWeight="semibold" pb="10px">
                   3. Carbon dioxide traps heat, increasing Earth's temperature.
