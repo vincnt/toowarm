@@ -674,7 +674,7 @@ const IndexPage = ({
             </Accordion>
           </Container>
         </Flex>
-        <Box position="relative" width="100%">
+        {/* <Box position="relative" width="100%">
           <Box
             bg={offWhite}
             position="absolute"
@@ -702,7 +702,7 @@ const IndexPage = ({
             top="-15px"
             left="25px"
           />
-        </Box>
+        </Box> */}
       </Container>
     </>
   );
