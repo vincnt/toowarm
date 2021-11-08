@@ -578,54 +578,101 @@ const IndexPage = ({
                 margin="auto"
               />
             </Box>
+
             <Box borderStyle="solid" borderColor="black" borderWidth="1px">
-              <Box p="25px">
+              <Box p="25px" maxW="90%">
                 <Heading size="md" fontWeight="normal" py="15px">
-                  The Government
+                  You
                 </Heading>
                 <Box pl="20px" py="5px">
-                  <Text fontWeight="semibold">Carbon Tax</Text>
-                  <Text>Higher carbon taxes on corporations.</Text>
-                </Box>
-                <Box pl="20px" py="5px">
-                  <Text fontWeight="semibold">Renewables Incentives</Text>
+                  <Text fontWeight="semibold">Make your voice heard.</Text>
+                  <Text fontStyle="italic">
+                    The most power in fighting climate change lies in the hands
+                    of your government.
+                  </Text>
                   <Text>
-                    Subsidise renewable energies or tax carbon production.
+                    Vote, speak out or send letters to your local authorities.
+                    The more people do this the more they will prioritise
+                    climate change policies.
+                  </Text>
+                </Box>
+
+                <Box pl="20px" py="5px">
+                  <Text fontWeight="semibold">Reduce car usage</Text>
+                  <Text>
+                    Use more public transport. Cut back on driving private cars,
+                    and invest in an electric car.
                   </Text>
                 </Box>
                 <Box pl="20px" py="5px">
-                  <Text fontWeight="semibold">Renewables Research</Text>
-                  <Text> Speed up research into fusion, solar power</Text>
+                  <Text fontWeight="semibold">Reduce energy usage at home</Text>
+                  <Text>
+                    Use energy efficient devices such as LED bulbs. Swap out gas
+                    devices such as stoves and boilers for electric versions.
+                    Ensure your home is properly insulated. Wear extra layers
+                    instead of turning up the heating. Switch to a green energy
+                    provider.
+                  </Text>
+                </Box>
+                <Box pl="20px" py="5px">
+                  <Text fontWeight="semibold">Eat less meat.</Text>
+                  <Text>
+                    Reduce meat and dairy consumption. Eat more vegetables.
+                  </Text>
+                </Box>
+
+                <Box pl="20px" py="5px">
+                  <Text fontWeight="semibold">Spread the word.</Text>
+                  <Text>
+                    Speak to your friends and family about climate change, what
+                    you've done and how they can help too.
+                  </Text>
                 </Box>
               </Box>
             </Box>
+
             <Box
               borderStyle="solid"
               borderColor="black"
               borderWidth="1px"
               mt="15px"
             >
-              <Box p="25px">
+              <Box p="25px" maxW="90%">
                 <Heading size="md" fontWeight="normal" py="15px">
-                  You
+                  The Government
                 </Heading>
+
                 <Box pl="20px" py="5px">
-                  <Text fontWeight="semibold">Vote</Text>
-                  <Text>Vote for the government to achieve it's goals</Text>
-                </Box>
-                <Box pl="20px" py="5px">
-                  <Text fontWeight="semibold">Use green transport</Text>
-                  <Text>Use public transport. fly less, only when needed.</Text>
-                </Box>
-                <Box pl="20px" py="5px">
-                  <Text fontWeight="semibold">
-                    Use energy efficient devices
+                  <Text fontWeight="semibold">Renewables Research</Text>
+                  <Text>
+                    Speed up research into renewable energies like nuclear
+                    fusion and solar power.
                   </Text>
-                  <Text>helps marginally</Text>
                 </Box>
                 <Box pl="20px" py="5px">
-                  <Text fontWeight="semibold">Eat less meat</Text>
-                  <Text>helps marginally</Text>
+                  <Text fontWeight="semibold">Public Transport</Text>
+                  <Text>
+                    Invest in more public transport infrastructure. Ban the sale
+                    of fossil fuel vehicles.
+                  </Text>
+                </Box>
+                <Box pl="20px" py="5px">
+                  <Text fontWeight="semibold">Insulate homes</Text>
+                  <Text>Insulate walls and roofs to reduce heat escaping.</Text>
+                </Box>
+                <Box pl="20px" py="5px">
+                  <Text fontWeight="semibold">Carbon Capture</Text>
+                  <Text>
+                    Protect forests and plant more trees to capture carbon from
+                    the atmosphere.
+                  </Text>
+                </Box>
+                <Box pl="20px" py="5px">
+                  <Text fontWeight="semibold">Green energy incentives</Text>
+                  <Text>
+                    Push companies to move towards green energy through tax
+                    reliefs and other incentives.
+                  </Text>
                 </Box>
               </Box>
             </Box>
