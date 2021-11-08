@@ -1,23 +1,13 @@
 import { NewsArticle } from "../components/NewsArticle";
 
 const articles: Record<string, NewsArticle> = {
-  hotArticle1: {
-    articleUrl:
-      "https://www.theguardian.com/environment/2021/oct/29/apocalypse-soon-reluctant-middle-east-forced-to-open-eyes-to-climate-crisis",
-    imageUrl:
-      "https://i.guim.co.uk/img/media/07ce31e42e37f703ccb8f895dc86ba00e12a35fc/0_0_5400_3240/master/5400.jpg?width=1020&quality=45&auto=format&fit=max&dpr=2&s=0efc297c34bd6692ce18b4e9f2790f98",
-    imageAlt:
-      "‘Apocalypse soon’: reluctant Middle East forced to open eyes to climate crisis",
-    text: "‘Apocalypse soon’: reluctant Middle East forced to open eyes to climate crisis",
-    source: "The Guardian",
-  },
   hotArticle2: {
     articleUrl:
       "https://www.theguardian.com/environment/2021/oct/26/asia-had-hottest-year-on-record-in-2020-un",
     imageUrl:
       "https://i.guim.co.uk/img/media/d8fcf241ae390a3ba8c9381fbff8c2adc06826ea/0_346_5184_3110/master/5184.jpg?width=620&quality=45&auto=format&fit=max&dpr=2&s=365be2f42682c47a6a666092f7347f23",
-    imageAlt: "Asia had hottest year on record in 2020 – UN",
-    text: "Asia had hottest year on record in 2020 – UN",
+    imageAlt: "Asia had hottest year on record in 2020",
+    text: "Asia had hottest year on record in 2020",
     source: "The Guardian",
   },
   hotArticle3: {
@@ -38,6 +28,15 @@ const articles: Record<string, NewsArticle> = {
     text: "Drought in northern Kenya pushes millions towards hunger",
     source: "Reuters",
   },
+  hotArticle1: {
+    articleUrl: "https://www.bbc.co.uk/news/world-us-canada-57890935",
+    imageUrl:
+      "https://ichef.bbci.co.uk/news/976/cpsprodpb/10E31/production/_119496196_hi068690236.jpg",
+    imageAlt:
+      "Oregon Bootleg Fire: Evacuations as largest US fire burns 364,000 acres",
+    text: "Oregon Bootleg Fire: Evacuations as largest US fire burns 364,000 acres",
+    source: "BBC",
+  },
   wetArticle1: {
     articleUrl:
       "https://news.sky.com/story/italy-29-inches-of-rain-in-12-hours-sets-new-european-record-as-extreme-weather-lashes-country-12428005",
@@ -49,14 +48,12 @@ const articles: Record<string, NewsArticle> = {
     source: "Sky News",
   },
   wetArticle2: {
-    articleUrl:
-      "https://www.washingtonpost.com/world/germany-comes-to-grips-with-massive-flood-damage-as-some-regions-brace-for-more-rains/2021/07/18/903c3444-e73b-11eb-88c5-4fd6382c47cb_story.html",
-    text: "Germany comes to grips with massive flood damage as some regions brace for more rains",
+    articleUrl: "https://www.bbc.co.uk/news/world-asia-india-58951456",
+    text: "Death toll passes 180 in Nepal and India floods",
     imageUrl:
-      "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/WRB2GEHHZII6XCKQ245T5E77P4.jpg&w=916",
-    imageAlt:
-      "Germany comes to grips with massive flood damage as some regions brace for more rains",
-    source: "Washington Post",
+      "https://ichef.bbci.co.uk/news/976/cpsprodpb/17862/production/_121145369_gettyimages-1235976495.jpg",
+    imageAlt: "Death toll passes 180 in Nepal and India floods",
+    source: "BBC",
   },
   wetArticle3: {
     articleUrl:
