@@ -28,6 +28,9 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
+  UnorderedList,
+  ListItem,
+  Select,
 } from "@chakra-ui/react";
 import { InfoOutlineIcon } from "@chakra-ui/icons";
 import { useState, useEffect } from "react";
@@ -65,6 +68,52 @@ export async function getStaticProps() {
   };
 }
 
+const countryContactDetails: any = {
+  us: (
+    <UnorderedList>
+      <ListItem>
+        <Link
+          href="https://community.citizensclimate.org/tools/call-congress-about-the-energy-innovation-and-carbon-dividend-act#/54/"
+          isExternal
+        >
+          Call your members of Congress about enacting a carbon price.
+        </Link>
+      </ListItem>
+      <ListItem>
+        <Link href="https://www.givinggreen.earth/recommendations" isExternal>
+          Find out the most effective places to donate to.
+        </Link>
+      </ListItem>
+    </UnorderedList>
+  ),
+  uk: (
+    <UnorderedList>
+      <ListItem>
+        <Link href="https://thetimeisnow.uk/" isExternal>
+          Sign this petition. (Over 200,000 signatures already)
+        </Link>
+      </ListItem>
+      <ListItem>
+        <Link
+          href="https://www.theclimatecoalition.org/write-to-your-mp"
+          isExternal
+        >
+          Write to your MP with this ready made letter.
+        </Link>
+      </ListItem>
+    </UnorderedList>
+  ),
+  others: (
+    <UnorderedList>
+      <ListItem>
+        <Link href="https://www.givinggreen.earth/recommendations" isExternal>
+          Find out the most effective places to donate to.
+        </Link>
+      </ListItem>
+    </UnorderedList>
+  ),
+};
+
 const IndexPage = ({
   co2Data,
   co2AndTempData,
@@ -80,6 +129,7 @@ const IndexPage = ({
   const [currentArticleNumber, setCurrentArticleNumber] = useState(0);
   const [currentArticle, setCurrentArticle] = useState(articlesArray[0]);
   const [currentArticleHover, setCurrentArticleHover] = useState(false);
+  const [userCountry, setUserCountry] = useState("us");
   const maximumCo2Age = Math.max.apply(
     Math,
     co2Data.map((o: any) => o.age)
@@ -115,8 +165,6 @@ const IndexPage = ({
           name="description"
           content="Climate change summary. Evidence and predictions for climate change. How individuals and governments can help fight climate change."
         />
-
-        <html lang="en" />
       </Head>
       <style jsx global>{`
         body {
@@ -717,7 +765,58 @@ const IndexPage = ({
                     <AccordionIcon />
                   </AccordionButton>
                 </h2>
-                <AccordionPanel pb={4}>insert links.</AccordionPanel>
+                <AccordionPanel pb={4}>
+                  <Text fontStyle="italic">
+                    Click the descriptions below to open the links in a new tab.{" "}
+                  </Text>
+                  <UnorderedList spacing="5px" mt="10px">
+                    <ListItem>
+                      <Link
+                        href="https://www.globalwarmingprimer.com/"
+                        isExternal
+                      >
+                        Easy to follow primer for global warming.{" "}
+                        <Text as="span" color="gray">
+                          (globalwarmingprimer.com)
+                        </Text>
+                      </Link>
+                    </ListItem>
+                    <ListItem>
+                      <Link
+                        href="https://eapsweb.mit.edu/sites/default/files/Climate_Primer.pdf"
+                        isExternal
+                      >
+                        Primer with more scientific details.{" "}
+                        <Text as="span" color="gray">
+                          (Massachusetts Institute of Technology)
+                        </Text>
+                      </Link>
+                    </ListItem>
+                    <ListItem>
+                      <Link
+                        href="https://www.ipcc.ch/report/ar6/wg1/"
+                        isExternal
+                      >
+                        Extremely detailed climate change reports for policy
+                        makers.{" "}
+                        <Text as="span" color="gray">
+                          (The Intergovernmental Panel on Climate Change (IPCC))
+                        </Text>
+                      </Link>
+                    </ListItem>
+                    <ListItem>
+                      <Link
+                        href="https://skepticalscience.com/argument.php"
+                        isExternal
+                      >
+                        Common climate change myths debunked.{" "}
+                        <Text as="span" color="gray">
+                          (skepticalscience.com)
+                        </Text>
+                      </Link>
+                    </ListItem>
+                  </UnorderedList>
+                </AccordionPanel>
               </AccordionItem>
 
               <AccordionItem>
@@ -730,20 +829,17 @@ const IndexPage = ({
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                  Good but not good enough.
+                  Some progress has been made but not enough to reach our
+                  targets.{" "}
+                  <Link
+                    href="https://www.nytimes.com/interactive/2021/10/25/climate/world-climate-pledges-cop26.html"
+                    isExternal
+                    color="blue"
+                  >
+                    This
+                  </Link>{" "}
+                  article explains it well.
                 </AccordionPanel>
-              </AccordionItem>
-
-              <AccordionItem>
-                <h2>
-                  <AccordionButton>
-                    <Box flex="1" textAlign="left">
-                      What is COP26 and what happened?
-                    </Box>
-                    <AccordionIcon />
-                  </AccordionButton>
-                </h2>
-                <AccordionPanel pb={4}>bla bla</AccordionPanel>
               </AccordionItem>
 
               <AccordionItem>
@@ -771,7 +867,20 @@ const IndexPage = ({
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                  insert links for countries
+                  <Select
+                    placeholder="Select your country"
+                    onChange={(val) => setUserCountry(val.target.value)}
+                    width="30%"
+                  >
+                    <option value="us">United States</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="others">Others</option>
+                  </Select>
+                  <Box mt="15px" pl="15px">
+                    {userCountry in countryContactDetails
+                      ? countryContactDetails[userCountry]
+                      : countryContactDetails["others"]}
+                  </Box>
                 </AccordionPanel>
               </AccordionItem>
 
@@ -785,7 +894,19 @@ const IndexPage = ({
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                  insert link about social impact.
+                  Yes they can. While eating less meat and reducing waste may
+                  seem to not make an impact, the true power of your actions is
+                  that they will influence others to do the same. Soon, enough
+                  people will be making a positive change that it will actually
+                  make a difference.{" "}
+                  <Link
+                    href="https://www.wired.com/story/does-climate-change-mean-you-should-fly-less-yeah-maybe/"
+                    isExternal
+                    color="blue"
+                  >
+                    Here
+                  </Link>{" "}
+                  is a great article on this effect.
                 </AccordionPanel>
               </AccordionItem>
             </Accordion>
