@@ -73,8 +73,11 @@ const OutboundLink = ({ href, children, color }: any) => (
   <Link
     href={href}
     color={color}
+    onClick={() => {
+      gtag.outbound({ href });
+      return false;
+    }}
     isExternal
-    onClick={() => gtag.outbound({ href })}
   >
     {children}
   </Link>
