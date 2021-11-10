@@ -596,7 +596,14 @@ const IndexPage = ({
               >
                 <Switch
                   size="md"
-                  onChange={(event) => setSwitchValue(event.target.checked)}
+                  onChange={(event) => {
+                    setSwitchValue(event.target.checked);
+                    gtag.event({
+                      action: "switch_click",
+                      event_category: "advanced_graphs",
+                      event_label: event.target.checked,
+                    });
+                  }}
                   color="gray"
                   colorScheme="red"
                 >
