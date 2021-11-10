@@ -1,5 +1,6 @@
 import Head from "next/head";
 import NextImage from "next/image";
+import * as gtag from "../lib/gtag";
 
 import {
   Box,
@@ -68,47 +69,52 @@ export async function getStaticProps() {
   };
 }
 
+const OutboundLink = ({ href, children, color }: any) => (
+  <Link
+    href={href}
+    color={color}
+    isExternal
+    onClick={() => gtag.outbound({ href })}
+  >
+    {children}
+  </Link>
+);
+
 const countryContactDetails: any = {
   us: (
     <UnorderedList>
       <ListItem>
-        <Link
-          href="https://community.citizensclimate.org/tools/call-congress-about-the-energy-innovation-and-carbon-dividend-act#/54/"
-          isExternal
-        >
+        <OutboundLink href="https://community.citizensclimate.org/tools/call-congress-about-the-energy-innovation-and-carbon-dividend-act#/54/">
           Call your members of Congress about enacting a carbon price.
-        </Link>
+        </OutboundLink>
       </ListItem>
       <ListItem>
-        <Link href="https://www.givinggreen.earth/recommendations" isExternal>
+        <OutboundLink href="https://www.givinggreen.earth/recommendations">
           Find out the most effective places to donate to.
-        </Link>
+        </OutboundLink>
       </ListItem>
     </UnorderedList>
   ),
   uk: (
     <UnorderedList>
       <ListItem>
-        <Link href="https://thetimeisnow.uk/" isExternal>
+        <OutboundLink href="https://thetimeisnow.uk/">
           Sign this petition. (Over 200,000 signatures already)
-        </Link>
+        </OutboundLink>
       </ListItem>
       <ListItem>
-        <Link
-          href="https://www.theclimatecoalition.org/write-to-your-mp"
-          isExternal
-        >
+        <OutboundLink href="https://www.theclimatecoalition.org/write-to-your-mp">
           Write to your MP with this ready-made letter.
-        </Link>
+        </OutboundLink>
       </ListItem>
     </UnorderedList>
   ),
   others: (
     <UnorderedList>
       <ListItem>
-        <Link href="https://www.givinggreen.earth/recommendations" isExternal>
+        <OutboundLink href="https://www.givinggreen.earth/recommendations">
           Find out the most effective places to donate to.
-        </Link>
+        </OutboundLink>
       </ListItem>
     </UnorderedList>
   ),
@@ -450,12 +456,9 @@ const IndexPage = ({
                         <Box width="80%"> {co2BreakdownPie()}</Box>
                         <Text fontSize="xs" color="gray">
                           Source:{" "}
-                          <Link
-                            href="https://ourworldindata.org/emissions-by-sector"
-                            isExternal
-                          >
+                          <OutboundLink href="https://ourworldindata.org/emissions-by-sector">
                             Our World In Data
-                          </Link>
+                          </OutboundLink>
                         </Text>
                       </>
                     ) : (
@@ -504,13 +507,10 @@ const IndexPage = ({
                         </VStack>
                         <Text fontSize="xs" color="gray">
                           Source:{" "}
-                          <Link
-                            href="https://www.ncei.noaa.gov/access/paleo-search/study/17975"
-                            isExternal
-                          >
+                          <OutboundLink href="https://www.ncei.noaa.gov/access/paleo-search/study/17975">
                             National Centers for Environmental Information
                             (NCEI)
-                          </Link>
+                          </OutboundLink>
                         </Text>
                       </Flex>
                     ) : (
@@ -539,12 +539,9 @@ const IndexPage = ({
                       {co2AndTempLineChart({ co2AndTempData })}
                       <Text fontSize="xs" color="gray">
                         Source:{" "}
-                        <Link
-                          href="http://www.climatedata.info/proxies/data-downloads/"
-                          isExternal
-                        >
+                        <OutboundLink href="http://www.climatedata.info/proxies/data-downloads/">
                           climatedata.info
-                        </Link>
+                        </OutboundLink>
                       </Text>
                     </>
                   ) : (
@@ -576,12 +573,9 @@ const IndexPage = ({
                       {sspProjectionLineChart({ sspProjections })}
                       <Text fontSize="xs" color="gray">
                         Source:{" "}
-                        <Link
-                          href="https://tntcat.iiasa.ac.at/SspDb"
-                          isExternal
-                        >
+                        <OutboundLink href="https://tntcat.iiasa.ac.at/SspDb">
                           SSP Database
-                        </Link>
+                        </OutboundLink>
                       </Text>
                     </Box>
                   ) : (
@@ -769,13 +763,12 @@ const IndexPage = ({
                   Yes it has been proven repeatedly to be real. Even skeptics
                   agree that climate change is real (their argument is over the
                   disastrous effects of climate change).{" "}
-                  <Link
+                  <OutboundLink
                     href="https://climate.nasa.gov/evidence/"
-                    isExternal
                     color="blue"
                   >
                     This
-                  </Link>{" "}
+                  </OutboundLink>{" "}
                   article by NASA showcases the clear evidence for climate
                   change.
                 </AccordionPanel>
@@ -794,36 +787,33 @@ const IndexPage = ({
                   <Text>
                     Definitely not. Some progress has been made but not enough
                     to reach our targets.{" "}
-                    <Link
+                    <OutboundLink
                       href="https://www.nytimes.com/interactive/2021/10/25/climate/world-climate-pledges-cop26.html"
-                      isExternal
                       color="blue"
                     >
                       This
-                    </Link>{" "}
+                    </OutboundLink>{" "}
                     article explains it well.
                   </Text>
                   <Text>
                     {" "}
-                    <Link
+                    <OutboundLink
                       href="https://climateactiontracker.org/"
-                      isExternal
                       color="blue"
                     >
                       This
-                    </Link>{" "}
+                    </OutboundLink>{" "}
                     website allows you to find your country and view it's
                     progress.
                   </Text>
                   <Text>
                     {" "}
-                    <Link
+                    <OutboundLink
                       href="https://www.wri.org/insights/climate-action-must-progress-far-faster-achieve-15-c-goal"
-                      isExternal
                       color="blue"
                     >
                       This
-                    </Link>{" "}
+                    </OutboundLink>{" "}
                     article details which sectors are doing well and which are
                     far behind.
                   </Text>
@@ -872,13 +862,12 @@ const IndexPage = ({
                   that they will influence others to do the same. Soon, enough
                   people will be making a positive change that it will actually
                   make a difference.{" "}
-                  <Link
+                  <OutboundLink
                     href="https://www.wired.com/story/does-climate-change-mean-you-should-fly-less-yeah-maybe/"
-                    isExternal
                     color="blue"
                   >
                     Here
-                  </Link>{" "}
+                  </OutboundLink>{" "}
                   is a great article on this effect.
                 </AccordionPanel>
               </AccordionItem>
@@ -897,49 +886,37 @@ const IndexPage = ({
                   </Text>
                   <UnorderedList spacing="5px" mt="10px">
                     <ListItem>
-                      <Link
-                        href="https://www.globalwarmingprimer.com/"
-                        isExternal
-                      >
+                      <OutboundLink href="https://www.globalwarmingprimer.com/">
                         Easy to follow primer for global warming.{" "}
                         <Text as="span" color="gray">
                           (globalwarmingprimer.com)
                         </Text>
-                      </Link>
+                      </OutboundLink>
                     </ListItem>
                     <ListItem>
-                      <Link
-                        href="https://eapsweb.mit.edu/sites/default/files/Climate_Primer.pdf"
-                        isExternal
-                      >
+                      <OutboundLink href="https://eapsweb.mit.edu/sites/default/files/Climate_Primer.pdf">
                         Primer with more scientific details.{" "}
                         <Text as="span" color="gray">
                           (Massachusetts Institute of Technology)
                         </Text>
-                      </Link>
+                      </OutboundLink>
                     </ListItem>
                     <ListItem>
-                      <Link
-                        href="https://www.ipcc.ch/report/ar6/wg1/"
-                        isExternal
-                      >
+                      <OutboundLink href="https://www.ipcc.ch/report/ar6/wg1/">
                         Extremely detailed climate change reports for policy
                         makers.{" "}
                         <Text as="span" color="gray">
                           (The Intergovernmental Panel on Climate Change (IPCC))
                         </Text>
-                      </Link>
+                      </OutboundLink>
                     </ListItem>
                     <ListItem>
-                      <Link
-                        href="https://skepticalscience.com/argument.php"
-                        isExternal
-                      >
+                      <OutboundLink href="https://skepticalscience.com/argument.php">
                         Common climate change myths debunked.{" "}
                         <Text as="span" color="gray">
                           (skepticalscience.com)
                         </Text>
-                      </Link>
+                      </OutboundLink>
                     </ListItem>
                   </UnorderedList>
                 </AccordionPanel>

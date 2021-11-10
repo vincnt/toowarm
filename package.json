@@ -24,6 +24,7 @@
     "recharts": "^2.1.6"
   },
   "devDependencies": {
+    "@types/gtag.js": "^0.0.8",
     "@types/node": "16.11.6",
     "@types/react": "17.0.33",
     "eslint": "7",
