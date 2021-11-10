@@ -98,7 +98,7 @@ const countryContactDetails: any = {
           href="https://www.theclimatecoalition.org/write-to-your-mp"
           isExternal
         >
-          Write to your MP with this ready made letter.
+          Write to your MP with this ready-made letter.
         </Link>
       </ListItem>
     </UnorderedList>
@@ -129,7 +129,7 @@ const IndexPage = ({
   const [currentArticleNumber, setCurrentArticleNumber] = useState(0);
   const [currentArticle, setCurrentArticle] = useState(articlesArray[0]);
   const [currentArticleHover, setCurrentArticleHover] = useState(false);
-  const [userCountry, setUserCountry] = useState("us");
+  const [userCountry, setUserCountry] = useState("");
   const maximumCo2Age = Math.max.apply(
     Math,
     co2Data.map((o: any) => o.age)
@@ -760,6 +760,132 @@ const IndexPage = ({
                 <h2>
                   <AccordionButton>
                     <Box flex="1" textAlign="left">
+                      How do I know climate change is real?
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>
+                  Yes it has been proven repeatedly to be real. Even skeptics
+                  agree that climate change is real (their argument is over the
+                  disastrous effects of climate change).{" "}
+                  <Link
+                    href="https://climate.nasa.gov/evidence/"
+                    isExternal
+                    color="blue"
+                  >
+                    This
+                  </Link>{" "}
+                  article by NASA showcases the clear evidence for climate
+                  change.
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box flex="1" textAlign="left">
+                      Hasn't enough been done already?
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>
+                  <Text>
+                    Definitely not. Some progress has been made but not enough
+                    to reach our targets.{" "}
+                    <Link
+                      href="https://www.nytimes.com/interactive/2021/10/25/climate/world-climate-pledges-cop26.html"
+                      isExternal
+                      color="blue"
+                    >
+                      This
+                    </Link>{" "}
+                    article explains it well.
+                  </Text>
+                  <Text>
+                    {" "}
+                    <Link
+                      href="https://climateactiontracker.org/"
+                      isExternal
+                      color="blue"
+                    >
+                      This
+                    </Link>{" "}
+                    website allows you to find your country and view it's
+                    progress.
+                  </Text>
+                  <Text>
+                    {" "}
+                    <Link
+                      href="https://www.wri.org/insights/climate-action-must-progress-far-faster-achieve-15-c-goal"
+                      isExternal
+                      color="blue"
+                    >
+                      This
+                    </Link>{" "}
+                    article details which sectors are doing well and which are
+                    far behind.
+                  </Text>
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box flex="1" textAlign="left">
+                      Who can I contact in my country?
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>
+                  <Select
+                    placeholder="Select your country"
+                    onChange={(val) => setUserCountry(val.target.value)}
+                    width={{ base: "80%", md: "30%" }}
+                  >
+                    <option value="us">United States</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="others">Others</option>
+                  </Select>
+                  <Box mt="15px" pl="15px">
+                    {userCountry in countryContactDetails
+                      ? countryContactDetails[userCountry]
+                      : countryContactDetails["others"]}
+                  </Box>
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box flex="1" textAlign="left">
+                      Can my actions actually make a difference?
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>
+                  Yes they can. While eating less meat and reducing waste may
+                  seem to not make an impact, the true power of your actions is
+                  that they will influence others to do the same. Soon, enough
+                  people will be making a positive change that it will actually
+                  make a difference.{" "}
+                  <Link
+                    href="https://www.wired.com/story/does-climate-change-mean-you-should-fly-less-yeah-maybe/"
+                    isExternal
+                    color="blue"
+                  >
+                    Here
+                  </Link>{" "}
+                  is a great article on this effect.
+                </AccordionPanel>
+              </AccordionItem>
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box flex="1" textAlign="left">
                       Where can I learn more about climate change?
                     </Box>
                     <AccordionIcon />
@@ -816,97 +942,6 @@ const IndexPage = ({
                       </Link>
                     </ListItem>
                   </UnorderedList>
-                </AccordionPanel>
-              </AccordionItem>
-
-              <AccordionItem>
-                <h2>
-                  <AccordionButton>
-                    <Box flex="1" textAlign="left">
-                      What progress have we made so far?
-                    </Box>
-                    <AccordionIcon />
-                  </AccordionButton>
-                </h2>
-                <AccordionPanel pb={4}>
-                  Some progress has been made but not enough to reach our
-                  targets.{" "}
-                  <Link
-                    href="https://www.nytimes.com/interactive/2021/10/25/climate/world-climate-pledges-cop26.html"
-                    isExternal
-                    color="blue"
-                  >
-                    This
-                  </Link>{" "}
-                  article explains it well.
-                </AccordionPanel>
-              </AccordionItem>
-
-              <AccordionItem>
-                <h2>
-                  <AccordionButton>
-                    <Box flex="1" textAlign="left">
-                      Is climate change real?
-                    </Box>
-                    <AccordionIcon />
-                  </AccordionButton>
-                </h2>
-                <AccordionPanel pb={4}>
-                  yes no one disputes it. people dispute how bad the effects
-                  will be.
-                </AccordionPanel>
-              </AccordionItem>
-
-              <AccordionItem>
-                <h2>
-                  <AccordionButton>
-                    <Box flex="1" textAlign="left">
-                      Who can I contact in my country?
-                    </Box>
-                    <AccordionIcon />
-                  </AccordionButton>
-                </h2>
-                <AccordionPanel pb={4}>
-                  <Select
-                    placeholder="Select your country"
-                    onChange={(val) => setUserCountry(val.target.value)}
-                    width="30%"
-                  >
-                    <option value="us">United States</option>
-                    <option value="uk">United Kingdom</option>
-                    <option value="others">Others</option>
-                  </Select>
-                  <Box mt="15px" pl="15px">
-                    {userCountry in countryContactDetails
-                      ? countryContactDetails[userCountry]
-                      : countryContactDetails["others"]}
-                  </Box>
-                </AccordionPanel>
-              </AccordionItem>
-
-              <AccordionItem>
-                <h2>
-                  <AccordionButton>
-                    <Box flex="1" textAlign="left">
-                      Can my actions actually make a difference?
-                    </Box>
-                    <AccordionIcon />
-                  </AccordionButton>
-                </h2>
-                <AccordionPanel pb={4}>
-                  Yes they can. While eating less meat and reducing waste may
-                  seem to not make an impact, the true power of your actions is
-                  that they will influence others to do the same. Soon, enough
-                  people will be making a positive change that it will actually
-                  make a difference.{" "}
-                  <Link
-                    href="https://www.wired.com/story/does-climate-change-mean-you-should-fly-less-yeah-maybe/"
-                    isExternal
-                    color="blue"
-                  >
-                    Here
-                  </Link>{" "}
-                  is a great article on this effect.
                 </AccordionPanel>
               </AccordionItem>
             </Accordion>
